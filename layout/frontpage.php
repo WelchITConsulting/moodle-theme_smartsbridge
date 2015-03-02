@@ -78,15 +78,11 @@ echo $OUTPUT->doctype() ?>
 
     <div id="page-content" class="row">
         <div id="region-main" class="<?php echo $regions['content']; ?>">
-            <?php
-            if ($loggedIn) :
-                echo '<p>New Home</p>';
-            else :
-                echo $OUTPUT->course_content_header();
-                echo $OUTPUT->main_content();
-                echo $OUTPUT->course_content_footer();
-            endif;
-            ?>
+        <?php
+            echo $OUTPUT->course_content_header();
+            echo $OUTPUT->main_content();
+            echo $OUTPUT->course_content_footer();
+        ?>
         </div>
 
         <?php
