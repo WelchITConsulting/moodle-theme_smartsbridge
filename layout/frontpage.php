@@ -79,7 +79,7 @@ echo $OUTPUT->doctype() ?>
     <div id="page-content" class="row">
         <div id="region-main" class="<?php echo $regions['content']; ?>">
             <?php
-            if ($isloggedin) :
+            if ($loggedIn) :
                 echo '<p>New Home</p>';
             else :
                 echo $OUTPUT->course_content_header();
@@ -90,11 +90,11 @@ echo $OUTPUT->doctype() ?>
         </div>
 
         <?php
-        if ($isloggedin && $knownregionpre) {
+        if ($loggedIn && $knownregionpre) {
             echo $OUTPUT->blocks('side-pre', $regions['pre']);
         }?>
         <?php
-        if ($isloggedin && $knownregionpost) {
+        if ($loggedIn && $knownregionpost) {
             echo $OUTPUT->blocks('side-post', $regions['post']);
         }?>
     </div>
