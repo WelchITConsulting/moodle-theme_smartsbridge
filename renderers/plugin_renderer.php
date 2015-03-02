@@ -15,11 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Filename : renderers
+ * Filename : plugin_renderer
  * Author   : John Welch <jwelch@welchitconsulting.co.uk>
- * Created  : 03 Jan 2015
+ * Created  : 02 Mar 2015
  */
 
-require_once('renderers/core_renderer.php');
-require_once('renderers/plugin_renderer.php');
-
+class theme_smartsbridge_plugin_renderer_base extends plugin_renderer_base
+{
+    public function index_page($detected, array $actions)
+    {
+        return '<p>theme_smartsbridge_renderer_base</p>';
+    }
+}

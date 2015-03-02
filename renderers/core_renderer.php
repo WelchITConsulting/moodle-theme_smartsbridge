@@ -20,8 +20,8 @@
  * Created  : 03 Jan 2015
  */
 
-class theme_smartsbridge_core_renderer extends core_renderer {
-
+class theme_smartsbridge_core_renderer extends core_renderer
+{
     /*
      * This renders a notification message.
      * Uses bootstrap compatible html.
@@ -397,4 +397,5 @@ class theme_smartsbridge_core_renderer extends core_renderer {
         }
         return $heading;
     }
+
 }
