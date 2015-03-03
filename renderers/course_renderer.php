@@ -64,7 +64,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                     continue;
                 }
                 $groups = groups_get_user_groups($course->id, $userid);
-                $group = groups_get_group($groups[0]);
+                $group = groups_get_group($groups[0][0]);
                 $content .= '<pre>' . print_r($group, true) . '</pre>';
 
                 if (!array_key_exists($contact['rolename'], $roles)) {
