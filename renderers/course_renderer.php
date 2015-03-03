@@ -130,6 +130,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         }
         return '<ul class="sb-tag-cloud"><li>'
              . implode('</li><li>', $a)
-             . '</li></ul>';
+             . '</li></ul>'
+             . "\n<!-- Max: {$maxcounts}   Min: {$mincounts}   Spread: {$spread}  Fontstep: {$fontstep}  -->";
     }
 }
