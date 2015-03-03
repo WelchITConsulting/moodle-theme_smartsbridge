@@ -130,7 +130,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                                                             'class' => 'group-link-' . $group->id,
                                                             'style' => 'font-size: ' . $fontsize . 'pt'));
         }
-        $html = '<pre>' . print_r($a, true) . '</a>';
+        $html = '<pre>' . print_r($a, true) . '</pre>';
         return $html;
     }
 }
