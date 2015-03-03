@@ -44,7 +44,7 @@ echo $OUTPUT->doctype() ?>
 <body <?php echo $OUTPUT->body_attributes(); ?>>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 <nav role="navigation" class="navbar navbar-default">
-    <div class="container">
+    <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#moodle-navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -64,7 +64,7 @@ echo $OUTPUT->doctype() ?>
     </div>
     </div>
 </nav>
-<div id="page" class="container">
+<div id="page" class="container-fluid">
     <header id="page-header" class="clearfix">
         <div id="page-navbar" class="clearfix">
             <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumb"><?php echo $OUTPUT->navbar(); ?></nav>

@@ -1,4 +1,4 @@
-<?php
+    <?php
 /*
  * Copyright (C) 2015 Welch IT Consulting
  *
@@ -64,7 +64,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                 }
                 $roles[$contact['rolename']]++;
             }
-            $content .= '<p>Groups Tag Cloud</p>';
+            $content .= '<p>Groups Tag Cloud</p><pre>' . print_r($roles, true) . '</pre>';
 
             // Display admin contacts
             if (!empty($managers)) {

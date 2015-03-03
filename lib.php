@@ -23,17 +23,17 @@
 function smartsbridge_grid($hassidepre, $hassidepost)
 {
     if ($hassidepre && $hassidepost) {
-        $regions = array('content' => 'col-sm-4 col-sm-push-4 col-md-6 col-md-push-3',
-                         'pre'     => 'col-sm-4 col-sm-pull-4 col-md-3 col-md-pull-6',
-                         'post'    => 'col-sm-4 col-md-3');
+        $regions = array('content' => 'col-sm-6 col-sm-push-3 col-md-8 col-md-push-2',
+                         'pre'     => 'col-sm-3 col-sm-pull-6 col-md-2 col-md-pull-8',
+                         'post'    => 'col-sm-3 col-md-2');
     } else if ($hassidepre && !$hassidepost) {
-        $regions = array('content' => 'col-sm-8 col-sm-push-4 col-md-9 col-md-push-3',
-                         'pre'     => 'col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9',
+        $regions = array('content' => 'col-sm-9 col-sm-push-3 col-md-10 col-md-push-2',
+                         'pre'     => 'col-sm-3 col-sm-pull-9 col-md-2 col-md-pull-10',
                          'post'    => 'emtpy');
     } else if (!$hassidepre && $hassidepost) {
-        $regions = array('content' => 'col-sm-8 col-md-9',
+        $regions = array('content' => 'col-sm-9 col-md-10',
                          'pre'     => 'empty',
-                         'pre' =>  'empty');
+                         'pre'     => 'col-sm-3 col-md-2');
         $regions['post'] = 'col-sm-4 col-md-3';
     } else if (!$hassidepre && !$hassidepost) {
         $regions = array('content' => 'col-md-12',
