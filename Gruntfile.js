@@ -27,50 +27,106 @@ module.exports = function(grunt) {
     // Show elapsed time
     require('time-grunt')(grunt);
 
-    // PHP strings for exec task.
-    var moodleroot = 'dirname(dirname(__DIR__))',
-        configfile = moodleroot + ' . "/config.php"',
-        decachephp = '';
-
-    decachephp += "define(\"CLI_SCRIPT\", true);";
-    decachephp += "require(" + configfile  + ");";
-    decachephp += "theme_reset_all_caches();";
+    // List the Bootstrap JS files in the order they are to be imported
+    var bootstrapJsFiles = [
+        'assets/vendor/bootstrap/js/transition.js',
+        'assets/vendor/bootstrap/js/alert.js',
+        'assets/vendor/bootstrap/js/button.js',
+        'assets/vendor/bootstrap/js/carousel.js',
+        'assets/vendor/bootstrap/js/collapse.js',
+        'assets/vendor/bootstrap/js/dropdown.js',
+        'assets/vendor/bootstrap/js/modal.js',
+        'assets/vendor/bootstrap/js/tooltip.js',
+        'assets/vendor/bootstrap/js/popover.js',
+        'assets/vendor/bootstrap/js/scrollspy.js',
+        'assets/vendor/bootstrap/js/tab.js',
+        'assets/vendor/bootstrap/js/affix.js'
+    ]
 
     grunt.initConfig({
         less: {
-            // Compile moodle styles.
-            moodle: {
-                options: {
-                    compress: true,
-                    sourceMap: false,
-                    outputSourceFiles: true
+            dev: {
+                // Compile moodle styles.
+                moodle: {
+                    options: {
+                        compress: false,
+                        sourceMap: false,
+                        outputSourceFiles: true
+                    },
+                    files: {
+                        "style/moodle.css": "assets/less/moodle.less",
+                    }
                 },
-                files: {
-                    "style/moodle.css": "less/moodle.less",
+                // Compile editor styles.
+                editor: {
+                    options: {
+                        compress: true,
+                        sourceMap: false,
+                        outputSourceFiles: true
+                    },
+                    files: {
+                        "style/editor.css": "assets/less/editor.less"
+                    }
                 }
             },
-            // Compile editor styles.
-            editor: {
-                options: {
-                    compress: true,
-                    sourceMap: false,
-                    outputSourceFiles: true
+            build: {
+                moodle: {
+                    options: {
+                        compress: true,
+                        sourceMap: false,
+                        outputSourceFiles: true
+                    },
+                    files: {
+                        "style/moodle.css": "assets/less/moodle.less",
+                    }
                 },
-                files: {
-                    "style/editor.css": "less/editor.less"
+                // Compile editor styles.
+                editor: {
+                    options: {
+                        compress: true,
+                        sourceMap: false,
+                        outputSourceFiles: true
+                    },
+                    files: {
+                        "style/editor.css": "assets/less/editor.less"
+                    }
                 }
             }
         },
-        exec: {
-            decache: {
-                cmd: "php -r '" + decachephp + "'",
-                callback: function(error, stdout, stderror) {
-                    // exec will output error messages
-                    // just add one to confirm success.
-                    if (!error) {
-                        grunt.log.writeln("Moodle theme cache reset.");
-                    }
-                }
+        autoprefixer: {
+            options: {
+                browsers: [
+                    'Android 2.3',
+                    'Android >= 4',
+                    'Chrome >= 20',
+                    'Explorer >= 8',
+                    'Firefox >= 24',
+                    'iOS >= 6',
+                    'Opera >= 12',
+                    'Safari >= 6'
+                ]
+            },
+            core: {
+                options: {
+                    map: true
+                },
+                src: [
+                    'style/moodle.css',
+                    'style/moodle-rtl.css',
+                    'style/editor.css'
+                ]
+            }
+        },
+        concat: {
+            options: {
+                separator: ''
+            },
+            bootstrap: {
+                src: [
+                    'assets/js/jquery-test.js',
+                    [bootstrapJsFiles]
+                ],
+                dest: 'jquery/bootstrap.js'
             }
         },
         watch: {
@@ -87,10 +143,14 @@ module.exports = function(grunt) {
     grunt.registerTask("default", ["watch"]);
 
     grunt.registerTask("dev", [
-        'less'
+        'less:dev',
+        'autoprefixer',
+        'concat'
     ]);
 
     grunt.registerTask("build", [
-        'less'
+        'less:build',
+        'autoprefixer',
+        'concat'
     ]);
 };

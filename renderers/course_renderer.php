@@ -1,4 +1,4 @@
-    <?php
+<?php
 /*
  * Copyright (C) 2015 Welch IT Consulting
  *
@@ -69,8 +69,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                 }
                 $roles[$groups[0][0]]++;
             }
-            $content .= html_writer::div($this->show_tag_cloud($roles, $course->id), 'course-roles')//;
-                      . "\n<!-- " . print_r($roles, true) . " -->\n";
+            $content .= html_writer::div($this->show_tag_cloud($roles, $course->id), 'course-roles');
 
             // Display admin contacts
             if (!empty($managers)) {
@@ -131,7 +130,6 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         }
         return '<ul class="sb-tag-cloud"><li>'
              . implode('</li><li>', $a)
-             . '</li></ul>'
-             . "\n<!-- Max: {$maxcounts}   Min: {$mincounts}   Spread: {$spread}  Fontstep: {$fontstep}  -->";
+             . '</li></ul>';
     }
 }

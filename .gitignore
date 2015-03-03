@@ -33,3 +33,5 @@ nbproject/private
 # Bower files
 assets/vendor
 
+# Apple files
+.DS_*
