@@ -68,7 +68,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
 
             // Display admin contacts
             if (!empty($managers)) {
-                $content .= '<h3>' . get_string('managerlinks', 'theme_smartbridge') . '</h3><p>';
+                $content .= '<h3>' . get_string('managerlinks', 'theme_smartsbridge') . '</h3><p>';
                 foreach($managers as $manager) {
                     $content .= html_writer::span($manager, 'manager-contact');
                 }
