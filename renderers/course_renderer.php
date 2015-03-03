@@ -99,9 +99,8 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
 
     private function show_tag_cloud($tags, $courseid)
     {
-        $smallest   = 8;
+        $smallest   = 11;
         $largest    = 22;
-        $html       = '';
         $maxcounts  = max($tags);
         $mincounts  = min($tags);
         $spread     = $maxcounts - $mincounts;
@@ -117,20 +116,20 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         $ctx = context_course::instance($courseid);
         foreach($tags as $groupid => $count) {
             $group = groups_get_group($groupid);
-            $groupurl = new moodle_url('/user/index.php', array('contextid'  => $ctx->id,
-                                                                'roleid'     => '',
-                                                                'id'         => $courseid,
-                                                                'perpage'    => 20,
-                                                                'accessince' => '',
-                                                                'search'     => '',
-                                                                'group'      => $groupid));
+            $groupurl = new moodle_url('/user/index.php', array('contextid'   => $ctx->id,
+                                                                'id'          => $courseid,
+                                                                'group'       => $groupid));
             $fontsize = str_replace(',', '.', ($smallest + (($count - $mincounts) * $fontstep)));
             $a .= html_writer::tag('a', $group->name, array('href'  => $groupurl,
                                                             'title' => $group->name,
                                                             'class' => 'group-link-' . $group->id,
                                                             'style' => 'font-size: ' . $fontsize . 'pt'));
         }
-        $html = '<pre>' . print_r($a, true) . '</pre>';
-        return $html;
+        if (empty($a)) {
+            return '';
+        }
+        return '<ul class="sb-tag-cloud"><li>'
+             . implode('</li><li>', $a)
+             . '</li></ul>';
     }
 }
