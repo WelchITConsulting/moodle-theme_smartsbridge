@@ -120,10 +120,10 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                                                                 'id'          => $courseid,
                                                                 'group'       => $groupid));
             $fontsize = str_replace(',', '.', ($smallest + (($count - $mincounts) * $fontstep)));
-            $a .= html_writer::tag('a', $group->name, array('href'  => $groupurl,
-                                                            'title' => $group->name,
-                                                            'class' => 'group-link-' . $group->id,
-                                                            'style' => 'font-size: ' . $fontsize . 'pt'));
+            $a[] = html_writer::tag('a', $group->name, array('href'  => $groupurl,
+                                                             'title' => $group->name,
+                                                             'class' => 'group-link-' . $group->id,
+                                                             'style' => 'font-size: ' . $fontsize . 'pt'));
         }
         if (empty($a)) {
             return '';
