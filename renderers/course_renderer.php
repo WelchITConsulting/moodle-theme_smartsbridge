@@ -48,9 +48,6 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                  . ($course->has_summary() ? $chelper->get_course_formatted_summary($course)
                                            : '');
 
-
-
-
         if ($course->has_course_contacts()) {
             // Display course group links in a tag cloud
             $managers = array();
@@ -72,8 +69,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                 }
                 $roles[$groups[0][0]]++;
             }
-            $content .= '<pre>' . print_r($roles, true) . '</pre>';
-            $content .= html_writer::div($this->show_tag_cloud($roles), 'course-roles');
+            $content .= html_writer::div($this->show_tag_cloud($roles, $courseid), 'course-roles');
 
             // Display admin contacts
             if (!empty($managers)) {
@@ -101,7 +97,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         return $content;
     }
 
-    private function show_tag_cloud($tags)
+    private function show_tag_cloud($tags, $courseid)
     {
         $smallest   = 8;
         $largest    = 22;
@@ -117,15 +113,24 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
             $fontspread = 1;
         }
         $fontstep   = $fontspread / $spread;
+        $a = array();
+        $ctx = context_course::instance($courseid);
         foreach($tags as $groupid => $count) {
             $group = groups_get_group($groupid);
-            $groupurl = new moodle_url('/', array());
+            $groupurl = new moodle_url('/user/index.php', array('contextid'  => $ctx,
+                                                                'roleid'     => '',
+                                                                'id'         => $courseid,
+                                                                'perpage'    => 20,
+                                                                'accessince' => '',
+                                                                'search'     => '',
+                                                                'group'      => $groupid));
             $fontsize = str_replace(',', '.', ($smallest + (($count - $mincounts) * $fontstep)));
-            $html .= html_writer::tag('a', $group->name, array('href'  => $groupurl,
-                                                               'title' => $group->name,
-                                                               'class' => 'group-link-' . $group->id,
-                                                               'style' => 'font-size: ' . $fontsize));
+            $a .= html_writer::tag('a', $group->name, array('href'  => $groupurl,
+                                                            'title' => $group->name,
+                                                            'class' => 'group-link-' . $group->id,
+                                                            'style' => 'font-size: ' . $fontsize . 'pt'));
         }
+        $html = '<pre>' . print_r($a, true) . '</a>';
         return $html;
     }
 }
