@@ -117,7 +117,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         $ctx = context_course::instance($courseid);
         foreach($tags as $groupid => $count) {
             $group = groups_get_group($groupid);
-            $groupurl = new moodle_url('/user/index.php', array('contextid'  => $ctx,
+            $groupurl = new moodle_url('/user/index.php', array('contextid'  => $ctx->id,
                                                                 'roleid'     => '',
                                                                 'id'         => $courseid,
                                                                 'perpage'    => 20,
