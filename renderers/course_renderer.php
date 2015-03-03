@@ -101,7 +101,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         return $content;
     }
 
-    private function show_group_cloud($tags)
+    private function show_tag_cloud($tags)
     {
         $smallest   = 8;
         $largest    = 22;
