@@ -63,6 +63,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                                                     $contact['username']);
                     continue;
                 }
+                $content .= '<p>Course ID: ' . $COURSE->id . '    User ID: ' . $userid;
                 $groups = groups_get_user_groups($COURSE->id, $userid);
                 $content .= '<pre>' . print_r($groups, true) . '</pre>';
 
