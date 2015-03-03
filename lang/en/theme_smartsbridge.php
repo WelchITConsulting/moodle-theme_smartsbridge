@@ -20,11 +20,6 @@
  * Created  : 03 Jan 2015
  */
 
-$string['pluginname']       = 'SmartsBridge';
-$string['region-side-post'] = 'Right';
-$string['region-side-pre']  = 'Left';
-$string['subtitle']         = 'Front page subtitle';
-$string['subtitle_desc']    = 'Optionally select a subtitle for the Moodle homepage';
 $string['choosereadme']     = '
 <div class="clearfix"><div class="theme_screenshot"><h2>SmartsBridge</h2>
 <img class=img-polaroid src="smartsbridge/pix/screenshot.jpg" />
@@ -39,13 +34,16 @@ $string['choosereadme']     = '
 <p>Authors: John Welch<br>
 Contact: jwelch@welchitconsulting.co.uk<br>
 Website: <a href="http://welchitconsulting.com/">welchitconsulting.com</a></p>
-
 <h3>Reporting bugs</h3>
-
 <p>You can report bugs on the <a href="https://github.com/WelchITConsulting/moodle-theme_smartsbridge/issues">github page</a> for this theme.</p>
-
 <h3>More information</h3>
 <ul>
 <li><a href="https://github.com/WelchITConslulting/moodle-theme_smartsbridge/wiki">Wiki page for this theme</a>
 <li><a href="http://welchitconsulting.com/">Developers website</a></li>
 </ul>';
+$string['managerlinks']     = 'Administration Contacts';
+$string['pluginname']       = 'SmartsBridge';
+$string['region-side-post'] = 'Right';
+$string['region-side-pre']  = 'Left';
+$string['subtitle']         = 'Front page subtitle';
+$string['subtitle_desc']    = 'Optionally select a subtitle for the Moodle homepage';

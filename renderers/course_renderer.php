@@ -48,12 +48,33 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                  . ($course->has_summary() ? $chelper->get_course_formatted_summary($course)
                                            : '');
 
-        // Display course group links
-        $content .= '<p>Groups Tag Cloud</p>';
+        if ($course->has_course_contacts()) {
+            // Display course group links in a tag cloud
+            $managers = array();
+            $roles    = array();
+            foreach($course->get_course_contacts() as $userid => $contact) {
+                if (strtolower($contact['rolename']) == 'manager') {
+                    $managers[] = html_writer::link(new moodle_url('/user/view.php',
+                                                                   array('id'     => $userid,
+                                                                         'course' => SITEID)),
+                                                    $contact['username']);
+                }
+                if (!in_array($contact['rolename'], $roles)) {
+                    $roles[$contact['rolename']] = 0;
+                }
+                $roles[$contact['rolename']]++;
+            }
+            $content .= '<p>Groups Tag Cloud</p>';
 
-        // Display admin contacts
-        $content .= '<p>Manager Contacts</p>';
-
+            // Display admin contacts
+            if (!empty($managers)) {
+                $content .= '<h3>' . get_text('managerlinks', 'theme_smartbridge') . '</h3><p>';
+                foreach($managers as $manager) {
+                    $content .= html_writer::span($manager, 'manager-contact');
+                }
+                $content .= '</p>';
+            }
+        }
         // Display course category if necessary
         if ($chelper->get_show_courses() == self::COURSECAT_SHOW_COURSES_EXPANDED_WITH_CAT) {
             require_once($CFG->libdir . '/coursecatlib.php');
