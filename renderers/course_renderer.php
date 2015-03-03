@@ -28,7 +28,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
 {
     protected function coursecat_coursebox_content(coursecat_helper $chelper, $course)
     {
-        global $CFG;
+        global $CFG, $COURSE;
 
         if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
             return '';
@@ -63,9 +63,11 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                                                     $contact['username']);
                     continue;
                 }
-                $content .= '<pre>' . print_r($contact, true) . '</pre>';
+                $groups = groups_get_user_groups($COURSE->id, $userid);
+                $content .= '<pre>' . print_r($groups, true) . '</pre>';
+
                 if (!array_key_exists($contact['rolename'], $roles)) {
-                    $roles[$contact['rolename']] = 0;
+                    $roles[$contact['role']['id']] = 0;
                 }
                 $roles[$contact['rolename']]++;
             }
