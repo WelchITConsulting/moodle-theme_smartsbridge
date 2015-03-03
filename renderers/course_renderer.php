@@ -64,13 +64,13 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                     continue;
                 }
                 $groups = groups_get_user_groups($course->id, $userid);
-                $group = groups_get_group($groups[0][0]);
-                $content .= '<pre>' . print_r($group, true) . '</pre>';
-
-                if (!array_key_exists($contact['rolename'], $roles)) {
-                    $roles[$contact['role']->id] = 0;
+                if (!isset($groups[0][0])) {
+                    continue;
                 }
-                $roles[$contact['role']->id]++;
+                if (!array_key_exists($groups[0][0], $roles)) {
+                    $roles[$groups[0][0]] = 0;
+                }
+                $roles[$groups[0][0]]++;
             }
             $content .= html_writer::div($this->show_tag_cloud($roles), 'course-roles');
 
