@@ -55,6 +55,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
             // Display course group links in a tag cloud
             $managers = array();
             $roles    = array();
+            $content .= '<pre>' . print_r($COURSE, true) . '</pre>';
             foreach($course->get_course_contacts() as $userid => $contact) {
                 if (strtolower($contact['rolename']) == 'manager') {
                     $managers[] = html_writer::link(new moodle_url('/user/view.php',
@@ -63,7 +64,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                                                     $contact['username']);
                     continue;
                 }
-                $content .= '<p>Course ID: ' . $COURSE->id . '    User ID: ' . $userid;
+                $content .= '<p>User ID: ' . $userid . '</p>';
                 $groups = groups_get_user_groups($COURSE->id, $userid);
                 $content .= '<pre>' . print_r($groups, true) . '</pre>';
 
