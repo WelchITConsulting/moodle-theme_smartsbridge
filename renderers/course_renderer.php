@@ -28,7 +28,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
 {
     protected function coursecat_coursebox_content(coursecat_helper $chelper, $course)
     {
-        global $CFG, $COURSE;
+        global $CFG;
 
         if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
             return '';
@@ -55,7 +55,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
             // Display course group links in a tag cloud
             $managers = array();
             $roles    = array();
-            $content .= '<pre>' . print_r($COURSE, true) . '</pre>';
+//            $content .= '<pre>' . print_r($COURSE, true) . '</pre>';
             foreach($course->get_course_contacts() as $userid => $contact) {
                 if (strtolower($contact['rolename']) == 'manager') {
                     $managers[] = html_writer::link(new moodle_url('/user/view.php',
@@ -65,7 +65,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                     continue;
                 }
                 $content .= '<p>User ID: ' . $userid . '</p>';
-                $groups = groups_get_user_groups($COURSE->id, $userid);
+                $groups = groups_get_user_groups($course->id, $userid);
                 $content .= '<pre>' . print_r($groups, true) . '</pre>';
 
                 if (!array_key_exists($contact['rolename'], $roles)) {
