@@ -48,6 +48,9 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                  . ($course->has_summary() ? $chelper->get_course_formatted_summary($course)
                                            : '');
 
+
+
+
         if ($course->has_course_contacts()) {
             // Display course group links in a tag cloud
             $managers = array();
@@ -59,7 +62,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                                                                          'course' => SITEID)),
                                                     $contact['username']);
                 }
-                if (!in_array($contact['rolename'], $roles)) {
+                if (!array_key_exists($contact['rolename'], $roles)) {
                     $roles[$contact['rolename']] = 0;
                 }
                 $roles[$contact['rolename']]++;
