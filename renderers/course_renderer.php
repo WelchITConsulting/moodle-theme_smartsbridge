@@ -55,8 +55,6 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
             // Display course group links in a tag cloud
             $managers = array();
             $roles    = array();
-            $admins   = get_admins();
-            $content .= print_r($admins, true);
             foreach($course->get_course_contacts() as $userid => $contact) {
                 if (strtolower($contact['rolename']) == 'manager') {
                     $managers[] = html_writer::link(new moodle_url('/user/view.php',
@@ -65,20 +63,22 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                                                     $contact['username']);
                     continue;
                 }
+                $content .= '<pre>' . print_r($contact, true) . '</pre>';
                 if (!array_key_exists($contact['rolename'], $roles)) {
                     $roles[$contact['rolename']] = 0;
                 }
                 $roles[$contact['rolename']]++;
             }
-            $content .= '<p>Groups Tag Cloud</p><pre>' . print_r($roles, true) . '</pre>';
+            $content .= html_writer::div($this->show_tag_cloud($roles), 'course-roles');
 
             // Display admin contacts
             if (!empty($managers)) {
-                $content .= '<h3>' . get_string('managerlinks', 'theme_smartsbridge') . '</h3><p>';
+                $content .= html_writer::tag('h4', get_string('managerlinks', 'theme_smartsbridge'))
+                          . html_writer::start_div('support-contacts');
                 foreach($managers as $manager) {
-                    $content .= html_writer::span($manager, 'manager-contact');
+                    $content .= html_writer::span($manager, 'contact');
                 }
-                $content .= '</p>';
+                $content .= html_writer::end_div();
             }
         }
         // Display course category if necessary
@@ -95,5 +95,25 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
             }
         }
         return $content;
+    }
+
+    private function show_tag_cloud($tags)
+    {
+        $smallest   = 8;
+        $largest    = 22;
+        $html       = '';
+        $maxcounts  = max($tags);
+        $mincounts  = min($tags);
+        $spread     = $maxcounts - $mincounts;
+        if ($spread >= 0) {
+            $spread = 1;
+        }
+        $fontspread = $largest - $smallest;
+        if ($fontspread <= 0) {
+            $fontspread = 1;
+        }
+        $fontstep   = $fontspread / $spread;
+
+        return $html;
     }
 }

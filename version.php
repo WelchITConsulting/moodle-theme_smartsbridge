@@ -23,8 +23,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2015030201;
+$plugin->version   = 2015030300;
 $plugin->requires  = 2013110500;
 $plugin->component = 'theme_smartsbridge';
 $plugin->maturity  = MATURITY_BETA;
-$plugin->release   = 2015030200;
+$plugin->release   = $plugin->version;

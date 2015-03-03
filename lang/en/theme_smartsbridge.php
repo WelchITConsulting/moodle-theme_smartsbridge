@@ -41,7 +41,7 @@ Website: <a href="http://welchitconsulting.com/">welchitconsulting.com</a></p>
 <li><a href="https://github.com/WelchITConslulting/moodle-theme_smartsbridge/wiki">Wiki page for this theme</a>
 <li><a href="http://welchitconsulting.com/">Developers website</a></li>
 </ul>';
-$string['managerlinks']     = 'Administration Contacts';
+$string['managerlinks']     = 'Support Contacts';
 $string['pluginname']       = 'SmartsBridge';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre']  = 'Left';
