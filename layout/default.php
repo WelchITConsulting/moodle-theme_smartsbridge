@@ -79,9 +79,9 @@ echo $OUTPUT->doctype() ?>
     <div id="page-content" class="row">
         <div id="region-main" class="<?php echo $regions['content']; ?>">
             <?php
-            echo $OUTPUT->course_content_header();
-            echo $OUTPUT->main_content();
-            echo $OUTPUT->course_content_footer();
+            echo $OUTPUT->course_content_header()
+               . $OUTPUT->main_content()
+               . $OUTPUT->course_content_footer();
             ?>
         </div>
 

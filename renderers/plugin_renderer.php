@@ -20,10 +20,10 @@
  * Created  : 02 Mar 2015
  */
 
-//class theme_smartsbridge_plugin_renderer_base extends plugin_renderer_base
-//{
-//    public function index_page($detected, array $actions)
-//    {
-//        return '<p>theme_smartsbridge_renderer_base</p>';
-//    }
-//}
+class theme_smartsbridge_renderer extends plugin_renderer_base
+{
+    public function index_page($detected, array $actions)
+    {
+        return '<p>theme_smartsbridge_renderer_base</p>';
+    }
+}

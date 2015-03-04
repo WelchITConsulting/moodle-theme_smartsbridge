@@ -69,7 +69,9 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                 }
                 $roles[$groups[0][0]]++;
             }
-            $content .= html_writer::div($this->show_tag_cloud($roles, $course->id), 'course-roles');
+            if (!empty($roles)) {
+                $content .= html_writer::div($this->show_tag_cloud($roles, $course->id), 'course-roles');
+            }
 
             // Display admin contacts
             if (!empty($managers)) {
@@ -84,7 +86,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         // Display course category if necessary
         if ($chelper->get_show_courses() == self::COURSECAT_SHOW_COURSES_EXPANDED_WITH_CAT) {
             require_once($CFG->libdir . '/coursecatlib.php');
-            if ($cat == coursecat::get($$course->category, IGNORE_MISSING)) {
+            if ($cat = coursecat::get($$course->category, IGNORE_MISSING)) {
                 $content .= html_writer::start_div('coursecat')
                           . get_string('category')
                           . ': '

@@ -41,19 +41,22 @@ module.exports = function(grunt) {
         'assets/vendor/bootstrap/js/scrollspy.js',
         'assets/vendor/bootstrap/js/tab.js',
         'assets/vendor/bootstrap/js/affix.js'
-    ]
+    ];
 
     grunt.initConfig({
+
         less: {
             dev: {
                 // Compile moodle styles.
                 moodle: {
                     options: {
                         compress: false,
+                        strictMath: true,
+                        outputSourceFiles: true,
                         sourceMap: false
                     },
                     files: {
-                        "style/moodle.css": "assets/less/moodle.less",
+                        'style/moodle.css': 'assets/less/moodle.less'
                     }
                 },
                 // Compile editor styles.
@@ -66,7 +69,7 @@ module.exports = function(grunt) {
                         "style/editor.css": "assets/less/editor.less"
                     }
                 }
-            },
+//            },
 //            build: {
 //                moodle: {
 //                    options: {
@@ -89,7 +92,7 @@ module.exports = function(grunt) {
 //                        "style/editor.min.css": "assets/less/editor.less"
 //                    }
 //                }
-//            }
+            }
         },
         autoprefixer: {
             options: {
@@ -142,7 +145,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask("dev", [
         'less:dev',
-        'autoprefixer',
+//        'autoprefixer',
         'concat'
     ]);
 
