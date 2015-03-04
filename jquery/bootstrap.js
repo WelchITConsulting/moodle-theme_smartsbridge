@@ -1,3 +1,7 @@
+/*!
+ * Test jQuery loaded
+ */
+if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery') }
 /* ========================================================================
  * Bootstrap: transition.js v3.3.2
  * http://getbootstrap.com/javascript/#transitions

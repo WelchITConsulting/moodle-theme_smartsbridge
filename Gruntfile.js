@@ -50,8 +50,7 @@ module.exports = function(grunt) {
                 moodle: {
                     options: {
                         compress: false,
-                        sourceMap: false,
-                        outputSourceFiles: true
+                        sourceMap: false
                     },
                     files: {
                         "style/moodle.css": "assets/less/moodle.less",
@@ -60,38 +59,37 @@ module.exports = function(grunt) {
                 // Compile editor styles.
                 editor: {
                     options: {
-                        compress: true,
-                        sourceMap: false,
-                        outputSourceFiles: true
+                        compress: false,
+                        sourceMap: false
                     },
                     files: {
                         "style/editor.css": "assets/less/editor.less"
                     }
                 }
             },
-            build: {
-                moodle: {
-                    options: {
-                        compress: true,
-                        sourceMap: false,
-                        outputSourceFiles: true
-                    },
-                    files: {
-                        "style/moodle.css": "assets/less/moodle.less",
-                    }
-                },
-                // Compile editor styles.
-                editor: {
-                    options: {
-                        compress: true,
-                        sourceMap: false,
-                        outputSourceFiles: true
-                    },
-                    files: {
-                        "style/editor.css": "assets/less/editor.less"
-                    }
-                }
-            }
+//            build: {
+//                moodle: {
+//                    options: {
+//                        compress: true,
+//                        sourceMap: false,
+//                        outputSourceFiles: true
+//                    },
+//                    files: {
+//                        "style/moodle.min.css": "assets/less/moodle.less",
+//                    }
+//                },
+//                // Compile editor styles.
+//                editor: {
+//                    options: {
+//                        compress: true,
+//                        sourceMap: false,
+//                        outputSourceFiles: true
+//                    },
+//                    files: {
+//                        "style/editor.min.css": "assets/less/editor.less"
+//                    }
+//                }
+//            }
         },
         autoprefixer: {
             options: {
@@ -123,7 +121,7 @@ module.exports = function(grunt) {
             },
             bootstrap: {
                 src: [
-                    'assets/js/jquery-test.js',
+                    'assets/js/jquery-loaded-test.js',
                     [bootstrapJsFiles]
                 ],
                 dest: 'jquery/bootstrap.js'
