@@ -48,50 +48,28 @@ module.exports = function(grunt) {
         less: {
             dev: {
                 // Compile moodle styles.
-                moodle: {
-                    options: {
-                        compress: false,
-                        strictMath: true,
-                        outputSourceFiles: true,
-                        sourceMap: false
-                    },
-                    files: {
-                        'style/moodle.css': 'assets/less/moodle.less'
-                    }
+                options: {
+                    compress: false,
+                    strictMath: true,
+                    outputSourceFiles: true,
+                    sourceMap: false
                 },
-                // Compile editor styles.
-                editor: {
-                    options: {
-                        compress: false,
-                        sourceMap: false
-                    },
-                    files: {
-                        "style/editor.css": "assets/less/editor.less"
-                    }
+                files: {
+                    'style/moodle.css': 'assets/less/moodle.less',
+                    'style/editor.css': 'assets/less/editor.less'
                 }
-//            },
-//            build: {
-//                moodle: {
-//                    options: {
-//                        compress: true,
-//                        sourceMap: false,
-//                        outputSourceFiles: true
-//                    },
-//                    files: {
-//                        "style/moodle.min.css": "assets/less/moodle.less",
-//                    }
-//                },
-//                // Compile editor styles.
-//                editor: {
-//                    options: {
-//                        compress: true,
-//                        sourceMap: false,
-//                        outputSourceFiles: true
-//                    },
-//                    files: {
-//                        "style/editor.min.css": "assets/less/editor.less"
-//                    }
-//                }
+            },
+            build: {
+                options: {
+                    compress: true,
+                    strictMath: true,
+                    sourceMap: false,
+                    outputSourceFiles: true
+                },
+                files: {
+                    "style/moodle.css": "assets/less/moodle.less",
+                    "style/editor.css": "assets/less/editor.less"
+                }
             }
         },
         autoprefixer: {
@@ -130,6 +108,18 @@ module.exports = function(grunt) {
                 dest: 'jquery/bootstrap.js'
             }
         },
+        copy: {
+            dev: {
+                nonull: true,
+                src: 'assets/vendor/html5shiv/dist/html5shiv-printshiv.js',
+                dest: 'javascript/html5shiv.js'
+            },
+            build: {
+                nonull: true,
+                src: 'assets/vendor/html5shiv/dist/html5shiv-printshiv.min.js',
+                dest: 'javascript/html5shiv.js'
+            }
+        },
         watch: {
             // Watch for any changes to less files and compile.
             files: ["less/**/*.less"],
@@ -146,12 +136,14 @@ module.exports = function(grunt) {
     grunt.registerTask("dev", [
         'less:dev',
 //        'autoprefixer',
+        'copy:dev',
         'concat'
     ]);
 
     grunt.registerTask("build", [
         'less:build',
         'autoprefixer',
+        'copy:build',
         'concat'
     ]);
 };
