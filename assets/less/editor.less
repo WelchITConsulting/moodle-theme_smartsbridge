@@ -1,25 +1,37 @@
 /*
-Copyright (C) 2015 Welch IT Consulting
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 Filename : editor
 Author   : John Welch <jwelch@welchitconsulting.co.uk>
 Created  : 03 Mar 2015
 */
-/* 
-    Created on : 03-Mar-2015, 13:46:31
-    Author     : John Welch <jwelch@welchitconsulting.co.uk>
-*/
 
+// Bootstrap variables
+@import "../vendor/bootstrap/less/variables.less";
+
+// theme specific variables
+@import "_variables.less";
+
+// Bootstrap Mixins
+@import "../vendor/bootstrap/less/mixins.less";
+
+// Bootstrap reset
+@import "../vendor/bootstrap/less/reset.less";
+
+// Bootstrap base CSS
+@import "../vendor/bootstrap/less/scaffolding.less";
+@import "../vendor/bootstrap/less/type.less";
+@import "../vendor/bootstrap/less/code.less";
+@import "../vendor/bootstrap/less/tables.less";
+@import "../vendor/bootstrap/less/wells.less";
+
+// Bootstrap buttons and alerts
+@import "../vendor/bootstrap/less/buttons.less";
+@import "../vendor/bootstrap/less/alerts.less";
+
+// Bootstrap misc
+@import "../vendor/bootstrap/less/thumbnails.less";
+
+// Bootstrap utility classes
+@import "./vendor/bootstrap/less/utilities.less";
+
+// Theme specific overrides
+@import "moodle/editor.less";
