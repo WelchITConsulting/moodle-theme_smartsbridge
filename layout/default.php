@@ -29,7 +29,7 @@ $knownregionpost = $PAGE->blocks->is_known_region('side-post');
 $regions = smartsbridge_grid($hassidepre, $hassidepost);
 $PAGE->set_popup_notification_allowed(false);
 $PAGE->requires->jquery();
-$PAGE->requires->jquery_plugin('bootstrap', 'theme_smartsbridge');
+$PAGE->requires->jquery_plugin('bootstrap', 'smartsbridge');
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
