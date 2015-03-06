@@ -15533,7 +15533,7 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
   margin: 10px 0 0;
 }
 .loginbox .desc {
-  font-size: 30px;
+  font-size: 16px;
   line-height: 30px;
   font-weight: 300;
   color: #333;
@@ -15573,6 +15573,10 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
   text-align: left;
   padding: 0;
   margin: 0;
+  line-height: 1.5;
+}
+.loginbox .signuppanel .subcontent p {
+  margin: 6px 0 12px;
 }
 .loginbox .signuppanel .subcontent .desc {
   display: none;
