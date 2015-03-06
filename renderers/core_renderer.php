@@ -22,11 +22,6 @@
 
 class theme_smartsbridge_core_renderer extends core_renderer
 {
-    public function home_link()
-    {
-        return '';
-    }
-
     /*
      * This renders a notification message.
      * Uses bootstrap compatible html.
