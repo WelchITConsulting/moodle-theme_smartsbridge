@@ -4,3 +4,76 @@ Author   : John Welch <jwelch@welchitconsulting.co.uk>
 Created  : 06 Mar 2015
 */
 
+.loginbox {
+    border-radius: @border-radius-large;
+    .make-row();
+    margin-right: 0;
+    .form-group;
+
+    .loginpanel {
+        .make-sm-column(4);
+        .make-md-column(3);
+        .well;
+
+        .loginform {
+
+            .form-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .form-input {
+                width: 100%;
+                margin-bottom: 5px;
+
+                input[type="text"],
+                input[type="password"] {
+                    .form-control;
+                    width: 100%;
+                }
+
+                input[type="submit"] {
+                    margin: 10px 0 0;
+                }
+            }
+        }
+    }
+
+    input[type="submit"] {
+        margin: 10px 0 0;
+    }
+
+    .desc {
+        font-size: 30px;
+        line-height: 30px;
+        font-weight: 300;
+        color: #333;
+    }
+
+    .signuppanel {
+        .make-sm-column(7);
+        .make-sm-column-push(1);
+        .make-md-column(8);
+        .make-md-column-push(1);
+
+        h2 {
+            display: none;
+        }
+
+        .subcontent {
+            text-align: left;
+            padding: 0;
+            margin: 0;
+
+            .desc {
+                display: none;
+            }
+        }
+    }
+
+    .rememberpass label,
+    .forgetpass a {
+        color: @brand-primary;
+        text-decoration: none;
+    }
+}

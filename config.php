@@ -85,7 +85,7 @@ $THEME->layouts                 = array(
                                                          'side-post',),
                         'defaultregion'         => 'side-pre',),
 
-    'login' => array('file'                     => 'default.php',
+    'login' => array('file'                     => 'login.php',
                      'regions'                  => array(),
                      'options'                  => array('langmenu' => true,
                                                          'nonavbar' => true,),),

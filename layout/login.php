@@ -44,63 +44,44 @@ echo $OUTPUT->doctype(); ?>
         <div class="site-brand">
             <a class="site-logo" href="<?php echo $CFG->wwwroot;?>"><span><?php echo $SITE->shortname; ?></span></a>
         </div>
-        <nav role="navigation" class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#moodle-navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div id="moodle-navbar" class="navbar-collapse collapse">
-                    <?php echo $OUTPUT->custom_menu(); ?>
-                    <?php echo $OUTPUT->user_menu(); ?>
-                    <ul class="nav pull-right">
-                        <li><?php echo $OUTPUT->page_heading_menu(); ?></li>
-                    </ul>
-                </div>
+    </header>
+    <div id="page" class="container-fluid">
+        <header id="page-header" class="clearfix">
+            <div id="page-navbar" class="clearfix">
+                <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumb"><?php echo $OUTPUT->navbar(); ?></nav>
+                <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
             </div>
-        </nav>
-    </header>
-<div id="page" class="container-fluid">
-    <header id="page-header" class="clearfix">
-        <div id="page-navbar" class="clearfix">
-            <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumb"><?php echo $OUTPUT->navbar(); ?></nav>
-            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        </div>
-        <div id="course-header">
-            <?php echo $OUTPUT->course_header(); ?>
-        </div>
-    </header>
-    <div id="page-content" class="row">
-        <div id="region-main" class="<?php echo $regions['content']; ?>">
+            <div id="course-header">
+                <?php echo $OUTPUT->course_header(); ?>
+            </div>
+        </header>
+        <div id="page-content" class="row">
+            <div id="region-main" class="<?php echo $regions['content']; ?>">
+                <?php
+                echo $OUTPUT->course_content_header()
+                   . $OUTPUT->main_content()
+                   . $OUTPUT->course_content_footer();
+                ?>
+            </div>
             <?php
-            echo $OUTPUT->course_content_header()
-               . $OUTPUT->main_content()
-               . $OUTPUT->course_content_footer();
-            ?>
+            if ($knownregionpre) {
+                echo $OUTPUT->blocks('side-pre', $regions['pre']);
+            }?>
+            <?php
+            if ($knownregionpost) {
+                echo $OUTPUT->blocks('side-post', $regions['post']);
+            }?>
         </div>
-        <?php
-        if ($knownregionpre) {
-            echo $OUTPUT->blocks('side-pre', $regions['pre']);
-        }?>
-        <?php
-        if ($knownregionpost) {
-            echo $OUTPUT->blocks('side-post', $regions['post']);
-        }?>
     </div>
-</div>
-<footer id="page-footer">
-    <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
-    <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
-    <?php
-    echo $OUTPUT->login_info();
-    echo $OUTPUT->home_link();
-    echo $OUTPUT->standard_footer_html();
-    ?>
-</footer>
+    <footer id="page-footer">
+        <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
+        <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
+        <?php
+        echo $OUTPUT->login_info();
+        echo $OUTPUT->home_link();
+        echo $OUTPUT->standard_footer_html();
+        ?>
+    </footer>
 <?php echo $OUTPUT->standard_end_of_body_html() ?>
 </body>
 </html>

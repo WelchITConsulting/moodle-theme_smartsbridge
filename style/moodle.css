@@ -560,186 +560,6 @@ a.skip:active {
 .groupselector label {
   display: inline-block;
 }
-.loginbox {
-  border-radius: 3px;
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-right: 0px;
-  margin-bottom: 15px;
-}
-.loginbox.onecolumn {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-}
-@media (min-width: 992px) {
-  .loginbox.onecolumn {
-    margin-left: 16.66666667%;
-  }
-}
-@media (min-width: 992px) {
-  .loginbox.onecolumn {
-    float: left;
-    width: 66.66666667%;
-  }
-}
-.loginbox.onecolumn blockquote {
-  border-color: #ddd;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-.loginbox.twocolumns .loginpanel {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-}
-@media (min-width: 768px) {
-  .loginbox.twocolumns .loginpanel {
-    float: left;
-    width: 33.33333333%;
-  }
-}
-@media (min-width: 1200px) {
-  .loginbox.twocolumns .loginpanel {
-    float: left;
-    width: 25%;
-  }
-}
-.loginbox.twocolumns .loginpanel blockquote {
-  border-color: #ddd;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-.loginbox.twocolumns .signuppanel {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 768px) {
-  .loginbox.twocolumns .signuppanel {
-    float: left;
-    width: 58.33333333%;
-  }
-}
-@media (min-width: 768px) {
-  .loginbox.twocolumns .signuppanel {
-    left: 8.33333333%;
-  }
-}
-@media (min-width: 1200px) {
-  .loginbox.twocolumns .signuppanel {
-    float: left;
-    width: 66.66666667%;
-  }
-}
-@media (min-width: 1200px) {
-  .loginbox.twocolumns .signuppanel {
-    left: 8.33333333%;
-  }
-}
-.loginbox .loginform .form-label {
-  width: 100%;
-  margin-bottom: 5px;
-}
-.loginbox .loginform .form-input {
-  width: 100%;
-  margin-bottom: 5px;
-}
-.loginbox .loginform .form-input input[type="text"],
-.loginbox .loginform .form-input input[type="password"] {
-  display: block;
-  height: 38px;
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555555;
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  width: 100%;
-}
-.loginbox .loginform .form-input input[type="text"]:focus,
-.loginbox .loginform .form-input input[type="password"]:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-}
-.loginbox .loginform .form-input input[type="text"]::-moz-placeholder,
-.loginbox .loginform .form-input input[type="password"]::-moz-placeholder {
-  color: #777777;
-  opacity: 1;
-}
-.loginbox .loginform .form-input input[type="text"]:-ms-input-placeholder,
-.loginbox .loginform .form-input input[type="password"]:-ms-input-placeholder {
-  color: #777777;
-}
-.loginbox .loginform .form-input input[type="text"]::-webkit-input-placeholder,
-.loginbox .loginform .form-input input[type="password"]::-webkit-input-placeholder {
-  color: #777777;
-}
-.loginbox .loginform .form-input input[type="text"][disabled],
-.loginbox .loginform .form-input input[type="password"][disabled],
-.loginbox .loginform .form-input input[type="text"][readonly],
-.loginbox .loginform .form-input input[type="password"][readonly],
-fieldset[disabled] .loginbox .loginform .form-input input[type="text"],
-fieldset[disabled] .loginbox .loginform .form-input input[type="password"] {
-  cursor: not-allowed;
-  background-color: #eeeeee;
-  opacity: 1;
-}
-textarea.loginbox .loginform .form-input input[type="text"],
-textarea.loginbox .loginform .form-input input[type="password"] {
-  height: auto;
-}
-.loginbox .loginform .form-input input[type="submit"] {
-  margin: 10px 0 0;
-}
-.loginbox input[type="submit"] {
-  margin: 10px 0 0;
-}
-.loginbox .desc {
-  font-size: 30px;
-  line-height: 30px;
-  font-weight: 300;
-  color: #333333;
-}
-.loginbox .subcontent {
-  text-align: left;
-  padding: 0;
-  margin: 0;
-}
-.loginbox .subcontent .desc {
-  display: none;
-}
-.loginbox .rememberpass label,
-.loginbox .forgetpass a {
-  color: #111;
-  text-decoration: none;
-}
 .notepost {
   margin-bottom: 1em;
 }
@@ -13199,8 +13019,6 @@ button.close {
 }
 .clearfix:before,
 .clearfix:after,
-.loginbox:before,
-.loginbox:after,
 .userprofile dl.list dd:before,
 .userprofile dl.list dd:after,
 .dl-horizontal dd:before,
@@ -13240,12 +13058,13 @@ button.close {
 .path-backup .mform .grouped_settings:before,
 .path-backup .mform .grouped_settings:after,
 .path-backup .mform .grouped_settings .fitem:before,
-.path-backup .mform .grouped_settings .fitem:after {
+.path-backup .mform .grouped_settings .fitem:after,
+.loginbox:before,
+.loginbox:after {
   content: " ";
   display: table;
 }
 .clearfix:after,
-.loginbox:after,
 .userprofile dl.list dd:after,
 .dl-horizontal dd:after,
 .container:after,
@@ -13265,7 +13084,8 @@ button.close {
 .mform fieldset .fitem:after,
 .form-item:after,
 .path-backup .mform .grouped_settings:after,
-.path-backup .mform .grouped_settings .fitem:after {
+.path-backup .mform .grouped_settings .fitem:after,
+.loginbox:after {
   clear: both;
 }
 .center-block {
@@ -15571,6 +15391,21 @@ input.fp-btn-choose {
   border-radius: 3px;
 }
 /*
+Filename : body
+Author   : John Welch <jwelch@welchitconsulting.co.uk>
+Created  : 06 Mar 2015
+*/
+html,
+body {
+  height: 100%;
+}
+.page {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -160px;
+}
+/*
     Filename   : course
     Created on : 05-Mar-2015, 10:12:12
     Author     : John Welch <jwelch@welchitconsulting.co.uk>
@@ -15589,10 +15424,164 @@ input.fp-btn-choose {
   font-size: 1.2em;
 }
 /*
-Filename : header
+Filename : login
 Author   : John Welch <jwelch@welchitconsulting.co.uk>
-Created  : 03 Mar 2015
+Created  : 06 Mar 2015
 */
+.loginbox {
+  border-radius: 6px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-right: 0;
+  margin-bottom: 15px;
+}
+.loginbox .loginpanel {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+@media (min-width: 768px) {
+  .loginbox .loginpanel {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+@media (min-width: 992px) {
+  .loginbox .loginpanel {
+    float: left;
+    width: 25%;
+  }
+}
+.loginbox .loginpanel blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.loginbox .loginpanel .loginform .form-label {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.loginbox .loginpanel .loginform .form-input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.loginbox .loginpanel .loginform .form-input input[type="text"],
+.loginbox .loginpanel .loginform .form-input input[type="password"] {
+  display: block;
+  height: 38px;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  width: 100%;
+}
+.loginbox .loginpanel .loginform .form-input input[type="text"]:focus,
+.loginbox .loginpanel .loginform .form-input input[type="password"]:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.loginbox .loginpanel .loginform .form-input input[type="text"]::-moz-placeholder,
+.loginbox .loginpanel .loginform .form-input input[type="password"]::-moz-placeholder {
+  color: #777777;
+  opacity: 1;
+}
+.loginbox .loginpanel .loginform .form-input input[type="text"]:-ms-input-placeholder,
+.loginbox .loginpanel .loginform .form-input input[type="password"]:-ms-input-placeholder {
+  color: #777777;
+}
+.loginbox .loginpanel .loginform .form-input input[type="text"]::-webkit-input-placeholder,
+.loginbox .loginpanel .loginform .form-input input[type="password"]::-webkit-input-placeholder {
+  color: #777777;
+}
+.loginbox .loginpanel .loginform .form-input input[type="text"][disabled],
+.loginbox .loginpanel .loginform .form-input input[type="password"][disabled],
+.loginbox .loginpanel .loginform .form-input input[type="text"][readonly],
+.loginbox .loginpanel .loginform .form-input input[type="password"][readonly],
+fieldset[disabled] .loginbox .loginpanel .loginform .form-input input[type="text"],
+fieldset[disabled] .loginbox .loginpanel .loginform .form-input input[type="password"] {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+textarea.loginbox .loginpanel .loginform .form-input input[type="text"],
+textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
+  height: auto;
+}
+.loginbox .loginpanel .loginform .form-input input[type="submit"] {
+  margin: 10px 0 0;
+}
+.loginbox input[type="submit"] {
+  margin: 10px 0 0;
+}
+.loginbox .desc {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 300;
+  color: #333;
+}
+.loginbox .signuppanel {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .loginbox .signuppanel {
+    float: left;
+    width: 58.33333333%;
+  }
+}
+@media (min-width: 768px) {
+  .loginbox .signuppanel {
+    left: 8.33333333%;
+  }
+}
+@media (min-width: 992px) {
+  .loginbox .signuppanel {
+    float: left;
+    width: 66.66666667%;
+  }
+}
+@media (min-width: 992px) {
+  .loginbox .signuppanel {
+    left: 8.33333333%;
+  }
+}
+.loginbox .signuppanel h2 {
+  display: none;
+}
+.loginbox .signuppanel .subcontent {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+.loginbox .signuppanel .subcontent .desc {
+  display: none;
+}
+.loginbox .rememberpass label,
+.loginbox .forgetpass a {
+  color: #46a546;
+  text-decoration: none;
+}
 /* responsive.less */
 @media (min-width: 980px) {
   .dir-rtl .navbar .nav.pull-right,
