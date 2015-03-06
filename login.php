@@ -19,6 +19,9 @@
  * Author   : John Welch <jwelch@welchitconsulting.co.uk>
  * Created  : 06 Mar 2015
  */
+
+require_once('../../config.php');
+require_once($CFG->dirroot . '/login/lib.php');
 ?>
 <div class="loginbox clearfix twocolumns">
     <div class="loginpanel">
