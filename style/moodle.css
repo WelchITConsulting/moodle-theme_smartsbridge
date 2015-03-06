@@ -15405,6 +15405,13 @@ body {
   height: 100%;
   margin: 0 auto -160px;
 }
+.site-header,
+.site-footer {
+  background-color: #46a546;
+}
+.site-header {
+  height: 45px;
+}
 /*
     Filename   : course
     Created on : 05-Mar-2015, 10:12:12
