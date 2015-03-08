@@ -20,13 +20,7 @@
  * Created  : 03 Jan 2015
  */
 
-$hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
-$hassidepost = $PAGE->blocks->region_has_content('side-post', $OUTPUT);
-
-$knownregionpre = $PAGE->blocks->is_known_region('side-pre');
-$knownregionpost = $PAGE->blocks->is_known_region('side-post');
-
-$regions = smartsbridge_grid($hassidepre, $hassidepost);
+$regions = smartsbridge_grid(false, false);
 $PAGE->set_popup_notification_allowed(false);
 $PAGE->requires->jquery();
 $PAGE->requires->jquery_plugin('bootstrap', 'theme_smartsbridge');
@@ -45,7 +39,7 @@ echo $OUTPUT->doctype(); ?>
             <a class="site-logo" href="<?php echo $CFG->wwwroot;?>"><span><?php echo $SITE->shortname; ?></span></a>
         </div>
     </header>
-    <div id="page" class="container-fluid">
+    <div id="page" class="container">
         <header id="page-header" class="clearfix">
             <div id="page-navbar" class="clearfix">
                 <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumb"><?php echo $OUTPUT->navbar(); ?></nav>
@@ -63,24 +57,24 @@ echo $OUTPUT->doctype(); ?>
                    . $OUTPUT->course_content_footer();
                 ?>
             </div>
-            <?php
-            if ($knownregionpre) {
-                echo $OUTPUT->blocks('side-pre', $regions['pre']);
-            }?>
-            <?php
-            if ($knownregionpost) {
-                echo $OUTPUT->blocks('side-post', $regions['post']);
-            }?>
         </div>
     </div>
-    <footer id="page-footer">
-        <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
-        <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
-        <?php
-        echo $OUTPUT->login_info();
-        echo $OUTPUT->home_link();
-        echo $OUTPUT->standard_footer_html();
-        ?>
+    <footer id="page-footer" class="container-fluid">
+        <div id="course-footer" class="row"><?php echo $OUTPUT->course_footer(); ?></div>
+        <div class="row">
+            <div id="copyright" class="col-md-8"><?php
+                printf(get_string('copyright', 'theme_smartsbridge'),
+                       date('Y'),
+                       $SITE->fullname);
+                printf('<br>' . get_string('designedby', 'theme_smartsbridge'),
+                       '<a href="http://welchitconsulting.com/">Welch IT Consulting</a>');
+                ?></div>
+            <div class="col-md-4">
+                <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
+                <?php echo $OUTPUT->login_info(); ?>
+            </div>
+        </div>
+        <?php echo $OUTPUT->standard_footer_html(); ?>
     </footer>
 <?php echo $OUTPUT->standard_end_of_body_html() ?>
 </body>

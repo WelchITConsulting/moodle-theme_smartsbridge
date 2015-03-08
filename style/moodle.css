@@ -15403,14 +15403,25 @@ body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -160px;
+  margin: 0 auto -50px;
 }
 .site-header,
-.site-footer {
+#page-footer {
   background-color: #46a546;
+  color: #fff;
 }
 .site-header {
   height: 45px;
+}
+#page-footer {
+  font-size: smaller;
+}
+#page-footer #copyright {
+  text-align: left;
+}
+#page-footer a {
+  font-weight: bold;
+  color: #fff;
 }
 /*
     Filename   : course
@@ -15540,7 +15551,7 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
   margin: 10px 0 0;
 }
 .loginbox .desc {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 30px;
   font-weight: 300;
   color: #333;

@@ -12,14 +12,27 @@ body {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -160px;
+    margin: 0 auto -50px;
 }
 
 
 .site-header,
-.page-footer {
+#page-footer {
     background-color: @brand-primary;
+    color: #fff;
 }
 .site-header {
     height: 45px;
+}
+#page-footer {
+    font-size: smaller;
+
+    #copyright {
+        text-align: left;
+    }
+
+    a {
+        font-weight: bold;
+        color: #fff;
+    }
 }
