@@ -15456,6 +15456,7 @@ Created  : 09 Mar 2015
 */
 #moodle-navbar {
   width: 60%;
+  float: right;
 }
 /*
     Filename   : course
