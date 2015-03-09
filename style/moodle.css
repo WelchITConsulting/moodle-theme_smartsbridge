@@ -15605,6 +15605,7 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
   font: 18px/2 Georgia, "Times New Roman", Times, serif;
 }
 .loginbox .signuppanel .subcontent p .logos {
+  width: 100%;
   text-align: center;
 }
 .loginbox .signuppanel .subcontent p .logos img {
