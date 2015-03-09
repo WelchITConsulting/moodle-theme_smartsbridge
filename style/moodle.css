@@ -15616,6 +15616,7 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
 }
 .loginbox .signuppanel .subcontent p.logos img {
   vertical-align: middle;
+  margin: 0 10px;
 }
 .loginbox .signuppanel .subcontent .desc {
   display: none;
