@@ -14,7 +14,7 @@ body {
 
 .site-header,
 .site-footer {
-    background-color: @brand-primary;
+    background-color: lighten(@brand-primary, 25%);
     color: #fff;
     width: 100%;
 }
@@ -27,9 +27,8 @@ body {
         display: block;
         width: 320px;
         height: 100px;
-        padding-top: 15px;
-        text-align: center;
-        background-color: @brand-primary;
+        padding: 15px 0 0 10px;
+        background-color: lighten(@brand-primary, 25%);
         .border-bottom-radius(@border-radius-large);
         .border-left-radius(@border-radius-large);
 

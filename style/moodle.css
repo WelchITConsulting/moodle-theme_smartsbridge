@@ -15401,7 +15401,7 @@ body {
 }
 .site-header,
 .site-footer {
-  background-color: #2fa4e7;
+  background-color: #a1d6f4;
   color: #fff;
   width: 100%;
 }
@@ -15413,9 +15413,8 @@ body {
   display: block;
   width: 320px;
   height: 100px;
-  padding-top: 15px;
-  text-align: center;
-  background-color: #2fa4e7;
+  padding: 15px 0 0 10px;
+  background-color: #a1d6f4;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-left-radius: 6px;
