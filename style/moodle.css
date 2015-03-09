@@ -15406,6 +15406,7 @@ body {
 .site-footer {
   background-color: #46a546;
   color: #fff;
+  width: 100%;
 }
 .site-header {
   height: 50px;
@@ -15417,7 +15418,6 @@ body {
   position: absolute;
   bottom: 0;
   height: 65px;
-  width: 100%;
   font-size: 12px;
 }
 .site-footer #copyright {
