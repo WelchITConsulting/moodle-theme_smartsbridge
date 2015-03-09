@@ -40,7 +40,7 @@ echo $OUTPUT->doctype(); ?>
 </head>
 <body <?php echo $OUTPUT->body_attributes(); ?>>
     <?php echo $OUTPUT->standard_top_of_body_html() ?>
-    <div id="site-content" class="container-fluid">
+    <div id="site-content">
         <header class="site-header container-fluid">
             <div class="site-brand">
                 <a class="site-logo" href="<?php echo $CFG->wwwroot;?>"><span><?php echo $SITE->shortname; ?></span></a>
@@ -94,22 +94,26 @@ echo $OUTPUT->doctype(); ?>
             </div>
         </div>
     </div>
-    <footer id="page-footer" class="container-fluid">
-        <div id="course-footer" class="row-fluid"><?php echo $OUTPUT->course_footer(); ?></div>
-        <div class="row-fluid">
-            <div id="copyright" class="col-md-8"><?php
-                printf(get_string('copyright', 'theme_smartsbridge'),
-                       date('Y'),
-                       $SITE->fullname);
-                printf('<br>' . get_string('designedby', 'theme_smartsbridge'),
-                       '<a href="http://welchitconsulting.com/">Welch IT Consulting</a>');
-                ?></div>
-            <div class="col-md-4 site-links">
-                <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
-                <?php echo $OUTPUT->login_info(); ?>
+    <footer class="site-footer" >
+        <div class="container-fluid">
+            <div id="course-footer" class="row-fluid"><?php echo $OUTPUT->course_footer(); ?></div>
+            <div class="row-fluid">
+                <div id="copyright" class="col-md-8"><?php
+                    printf(get_string('copyright', 'theme_smartsbridge'),
+                           date('Y'),
+                           $SITE->fullname);
+                    printf('<br>' . get_string('designedby', 'theme_smartsbridge'),
+                           '<a href="http://welchitconsulting.com/">Welch IT Consulting</a>');
+                    ?></div>
+                <div class="col-md-4 site-links">
+                    <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
+                <?php
+                    echo $OUTPUT->login_info()
+                       . $OUTPUT->standard_footer_html();
+                ?>
+                </div>
             </div>
         </div>
-        <div class="row-fluid"><?php echo $OUTPUT->standard_footer_html(); ?></div>
     </footer>
     <?php echo $OUTPUT->standard_end_of_body_html() ?>
 </body>

@@ -34,7 +34,7 @@ echo $OUTPUT->doctype(); ?>
 </head>
 <body <?php echo $OUTPUT->body_attributes(); ?>>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
-    <div id="site-content" class="container-fluid">
+    <div id="site-content">
         <header class="site-header container-fluid">
             <div class="site-brand">
                 <a class="site-logo" href="<?php echo $CFG->wwwroot;?>"><span><?php echo $SITE->shortname; ?></span></a>
