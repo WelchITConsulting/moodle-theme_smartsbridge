@@ -15434,7 +15434,7 @@ body {
 }
 #page {
   position: relative;
-  top: 100px;
+  padding-top: 60px;
 }
 .site-footer {
   position: absolute;
