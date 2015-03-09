@@ -15454,7 +15454,7 @@ Filename : navbar
 Author   : John Welch <jwelch@welchitconsulting.co.uk>
 Created  : 09 Mar 2015
 */
-#moodle-navbar {
+.navbar-default {
   width: 60%;
   float: right;
 }
@@ -15606,7 +15606,7 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
 @media (min-width: 768px) {
   .loginbox .signuppanel {
     float: left;
-    width: 58.33333333%;
+    width: 50%;
   }
 }
 @media (min-width: 768px) {
@@ -15617,7 +15617,7 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
 @media (min-width: 992px) {
   .loginbox .signuppanel {
     float: left;
-    width: 66.66666667%;
+    width: 58.33333333%;
   }
 }
 @media (min-width: 992px) {
