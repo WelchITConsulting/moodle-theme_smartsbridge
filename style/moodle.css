@@ -15432,7 +15432,7 @@ body {
 .site-header .site-brand a span {
   display: none;
 }
-.page {
+#page {
   position: relative;
   top: 100px;
 }
