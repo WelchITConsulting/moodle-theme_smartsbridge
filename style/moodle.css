@@ -15491,6 +15491,9 @@ Created  : 06 Mar 2015
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
+.loginbox .loginpanel .h2 {
+  margin-top: 10px;
+}
 .loginbox .loginpanel .loginform .form-label {
   width: 100%;
   margin-bottom: 5px;
@@ -15554,6 +15557,9 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
 }
 .loginbox .loginpanel .loginform .form-input input[type="submit"] {
   margin: 10px 0 0;
+}
+.loginbox .loginpanel .loginform .forgetpass {
+  margin-top: 10px;
 }
 .loginbox input[type="submit"] {
   margin: 10px 0 0;
