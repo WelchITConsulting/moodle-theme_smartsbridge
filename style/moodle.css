@@ -15423,6 +15423,9 @@ body {
   font-weight: bold;
   color: #fff;
 }
+#page-footer .site-links {
+  text-align: right;
+}
 /*
     Filename   : course
     Created on : 05-Mar-2015, 10:12:12

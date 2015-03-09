@@ -89,8 +89,8 @@ echo $OUTPUT->doctype(); ?>
         </div>
     </div>
     <footer id="page-footer" class="container-fluid">
-        <div id="course-footer" class="row"><?php echo $OUTPUT->course_footer(); ?></div>
-        <div class="row">
+        <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
+        <div>
             <div id="copyright" class="col-md-8"><?php
                 printf(get_string('copyright', 'theme_smartsbridge'),
                        date('Y'),
@@ -98,7 +98,7 @@ echo $OUTPUT->doctype(); ?>
                 printf('<br>' . get_string('designedby', 'theme_smartsbridge'),
                        '<a href="http://welchitconsulting.com/">Welch IT Consulting</a>');
                 ?></div>
-            <div class="col-md-4">
+            <div class="col-md-4 site-links">
                 <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
                 <?php echo $OUTPUT->login_info(); ?>
             </div>
