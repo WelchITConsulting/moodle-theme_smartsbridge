@@ -15414,7 +15414,7 @@ body {
   width: 320px;
   height: 100px;
   padding: 15px 0 0 10px;
-  background-color: #e6f4fc;
+  background-color: #b8e0f7;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-left-radius: 6px;
@@ -15448,6 +15448,14 @@ body {
 }
 .site-footer .site-links {
   text-align: right;
+}
+/*
+Filename : navbar
+Author   : John Welch <jwelch@welchitconsulting.co.uk>
+Created  : 09 Mar 2015
+*/
+#moodle-navbar {
+  width: 60%;
 }
 /*
     Filename   : course
