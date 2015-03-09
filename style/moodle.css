@@ -15411,9 +15411,22 @@ body {
 .site-header {
   height: 50px;
 }
+.site-header .site-brand {
+  float: left;
+  display: block;
+  width: 320px;
+  height: 100px;
+}
 .site-header .site-brand a {
   color: #fff;
   padding: 15px;
+  width: 288;
+  height: 80;
+  margin-top: 10px;
+  background: url(/theme/smartsbridge/pix/SmartsBridge.png) no-repeat 50% 50%;
+}
+.site-header .site-brand a span {
+  display: none;
 }
 .site-footer {
   position: absolute;
