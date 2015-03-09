@@ -15402,12 +15402,6 @@ html {
 body {
   margin-bottom: 65px;
 }
-/*.page {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -50px;
-}*/
 .site-header,
 .site-footer {
   background-color: #46a546;
@@ -15427,6 +15421,7 @@ body {
   font-size: 12px;
 }
 .site-footer #copyright {
+  padding-top: 10px;
   text-align: left;
 }
 .site-footer a {
@@ -15460,7 +15455,7 @@ Author   : John Welch <jwelch@welchitconsulting.co.uk>
 Created  : 06 Mar 2015
 */
 .loginbox {
-  border-radius: 6px;
+  border-radius: 15px;
   margin-left: -15px;
   margin-right: -15px;
   margin-right: 0;
@@ -15607,8 +15602,7 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
 }
 .loginbox .signuppanel .subcontent p {
   margin: 25px 0 25px;
-  line-height: 2;
-  font-size: 18px;
+  font: 18px/2 Georgia, "Times New Roman", Times, serif;
 }
 .loginbox .signuppanel .subcontent .desc {
   display: none;
