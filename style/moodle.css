@@ -15419,21 +15419,21 @@ body {
 .site-header .site-brand a {
   color: #fff;
 }
-.footer {
+.site-footer {
   position: absolute;
   bottom: 0;
   height: 65px;
   width: 100%;
   font-size: 12px;
 }
-.footer #copyright {
+.site-footer #copyright {
   text-align: left;
 }
-.footer a {
+.site-footer a {
   font-weight: bold;
   color: #fff;
 }
-.footer .site-links {
+.site-footer .site-links {
   text-align: right;
 }
 /*
@@ -15606,9 +15606,9 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
   margin: 0;
 }
 .loginbox .signuppanel .subcontent p {
-  margin: 6px 0 12px;
-  line-height: 1.5;
-  font-size: 14px;
+  margin: 25px 0 25px;
+  line-height: 2;
+  font-size: 18px;
 }
 .loginbox .signuppanel .subcontent .desc {
   display: none;
