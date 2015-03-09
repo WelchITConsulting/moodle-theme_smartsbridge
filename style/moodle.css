@@ -15400,16 +15400,16 @@ html {
   min-height: 100%;
 }
 body {
-  margin-bottom: 60px;
+  margin-bottom: 65px;
 }
-.page {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -50px;
-}
+/*.page {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -50px;
+}*/
 .site-header,
-#page-footer {
+.footer {
   background-color: #46a546;
   color: #fff;
 }
@@ -15419,20 +15419,21 @@ body {
 .site-header .site-brand a {
   color: #fff;
 }
-#page-footer {
+.footer {
   position: absolute;
   bottom: 0;
-  height: 60px;
-  font-size: 11px;
+  height: 65px;
+  width: 100%;
+  font-size: 12px;
 }
-#page-footer #copyright {
+.footer #copyright {
   text-align: left;
 }
-#page-footer a {
+.footer a {
   font-weight: bold;
   color: #fff;
 }
-#page-footer .site-links {
+.footer .site-links {
   text-align: right;
 }
 /*
@@ -15603,10 +15604,11 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
   text-align: left;
   padding: 0;
   margin: 0;
-  line-height: 1.5;
 }
 .loginbox .signuppanel .subcontent p {
   margin: 6px 0 12px;
+  line-height: 1.5;
+  font-size: 14px;
 }
 .loginbox .signuppanel .subcontent .desc {
   display: none;
