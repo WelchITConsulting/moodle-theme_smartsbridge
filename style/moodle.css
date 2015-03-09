@@ -13058,9 +13058,7 @@ button.close {
 .path-backup .mform .grouped_settings:before,
 .path-backup .mform .grouped_settings:after,
 .path-backup .mform .grouped_settings .fitem:before,
-.path-backup .mform .grouped_settings .fitem:after,
-.loginbox:before,
-.loginbox:after {
+.path-backup .mform .grouped_settings .fitem:after {
   content: " ";
   display: table;
 }
@@ -13084,8 +13082,7 @@ button.close {
 .mform fieldset .fitem:after,
 .form-item:after,
 .path-backup .mform .grouped_settings:after,
-.path-backup .mform .grouped_settings .fitem:after,
-.loginbox:after {
+.path-backup .mform .grouped_settings .fitem:after {
   clear: both;
 }
 .center-block {
@@ -15476,8 +15473,7 @@ Created  : 06 Mar 2015
 */
 .loginbox {
   border-radius: 15px;
-  margin-left: -15px;
-  margin-right: -15px;
+  /*.make-row();*/
   margin-right: 0;
   margin-bottom: 15px;
 }
@@ -15494,6 +15490,7 @@ Created  : 06 Mar 2015
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
 }
 @media (min-width: 768px) {
   .loginbox .loginpanel {
