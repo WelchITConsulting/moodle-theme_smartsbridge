@@ -15604,6 +15604,12 @@ textarea.loginbox .loginpanel .loginform .form-input input[type="password"] {
   margin: 25px 0 25px;
   font: 18px/2 Georgia, "Times New Roman", Times, serif;
 }
+.loginbox .signuppanel .subcontent p .logos {
+  text-align: center;
+}
+.loginbox .signuppanel .subcontent p .logos img {
+  vertical-align: middle;
+}
 .loginbox .signuppanel .subcontent .desc {
   display: none;
 }
