@@ -60,8 +60,8 @@ echo $OUTPUT->doctype(); ?>
         </div>
     </div>
     <footer id="page-footer" class="container-fluid">
-        <div id="course-footer" class="row"><?php echo $OUTPUT->course_footer(); ?></div>
-        <div class="row">
+        <div id="course-footer" class=""><?php echo $OUTPUT->course_footer(); ?></div>
+        <div class="">
             <div id="copyright" class="col-md-8"><?php
                 printf(get_string('copyright', 'theme_smartsbridge'),
                        date('Y'),
