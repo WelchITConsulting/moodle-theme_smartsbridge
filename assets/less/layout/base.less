@@ -4,9 +4,12 @@ Author   : John Welch <jwelch@welchitconsulting.co.uk>
 Created  : 06 Mar 2015
 */
 
-html,
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
-    height: 100%;
+    margin-bottom: 60px;
 }
 .page {
     min-height: 100%;
@@ -22,10 +25,20 @@ body {
     color: #fff;
 }
 .site-header {
-    height: 45px;
+    height: 50px;
+
+    .site-brand {
+
+        a {
+            color: #fff;
+        }
+    }
 }
 #page-footer {
-    font-size: smaller;
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    font-size: @font-size-mini;
 
     #copyright {
         text-align: left;

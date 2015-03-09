@@ -34,33 +34,35 @@ echo $OUTPUT->doctype(); ?>
 </head>
 <body <?php echo $OUTPUT->body_attributes(); ?>>
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
-    <header class="site-header container-fluid">
-        <div class="site-brand">
-            <a class="site-logo" href="<?php echo $CFG->wwwroot;?>"><span><?php echo $SITE->shortname; ?></span></a>
-        </div>
-    </header>
-    <div id="page" class="container">
-        <header id="page-header" class="clearfix">
-            <div id="page-navbar" class="clearfix">
-                <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumb"><?php echo $OUTPUT->navbar(); ?></nav>
-                <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-            </div>
-            <div id="course-header">
-                <?php echo $OUTPUT->course_header(); ?>
+    <div id="site-content" class="container-fluid">
+        <header class="site-header container-fluid">
+            <div class="site-brand">
+                <a class="site-logo" href="<?php echo $CFG->wwwroot;?>"><span><?php echo $SITE->shortname; ?></span></a>
             </div>
         </header>
-        <div id="page-content" class="row">
-            <div id="region-main" class="<?php echo $regions['content']; ?>">
-                <?php
-                echo $OUTPUT->course_content_header()
-                   . $OUTPUT->main_content()
-                   . $OUTPUT->course_content_footer();
-                ?>
+        <div id="page" class="container">
+            <header id="page-header" class="clearfix">
+                <div id="page-navbar" class="clearfix">
+                    <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumb"><?php echo $OUTPUT->navbar(); ?></nav>
+                    <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
+                </div>
+                <div id="course-header">
+                    <?php echo $OUTPUT->course_header(); ?>
+                </div>
+            </header>
+            <div id="page-content" class="row">
+                <div id="region-main" class="<?php echo $regions['content']; ?>">
+                    <?php
+                    echo $OUTPUT->course_content_header()
+                       . $OUTPUT->main_content()
+                       . $OUTPUT->course_content_footer();
+                    ?>
+                </div>
             </div>
         </div>
     </div>
     <footer id="page-footer" class="container-fluid">
-        <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
+        <div id="course-footer" class="row-fluid"><?php echo $OUTPUT->course_footer(); ?></div>
         <div class="row-fluid">
             <div id="copyright" class="col-md-8"><?php
                 printf(get_string('copyright', 'theme_smartsbridge'),
@@ -74,8 +76,8 @@ echo $OUTPUT->doctype(); ?>
                 <?php echo $OUTPUT->login_info(); ?>
             </div>
         </div>
-        <?php echo $OUTPUT->standard_footer_html(); ?>
+        <div class="row-fluid"><?php echo $OUTPUT->standard_footer_html(); ?></div>
     </footer>
-<?php echo $OUTPUT->standard_end_of_body_html() ?>
+    <?php echo $OUTPUT->standard_end_of_body_html() ?>
 </body>
 </html>
