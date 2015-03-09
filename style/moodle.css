@@ -15422,6 +15422,8 @@ body {
   border-top-left-radius: 6px;
 }
 .site-header .site-brand a {
+  position: relative;
+  display: block;
   color: #fff;
   padding: 15px;
   width: 288px;

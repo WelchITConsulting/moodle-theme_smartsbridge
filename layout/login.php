@@ -40,7 +40,7 @@ echo $OUTPUT->doctype(); ?>
                 <a class="site-logo" href="<?php echo $CFG->wwwroot;?>"><span><?php echo $SITE->shortname; ?></span></a>
             </div>
         </header>
-        <div id="page" class="container">
+        <div id="page" class="container-fluid">
             <header id="page-header" class="clearfix">
                 <div id="page-navbar" class="clearfix">
                     <nav class="breadcrumb-nav" role="navigation" aria-label="breadcrumb"><?php echo $OUTPUT->navbar(); ?></nav>
