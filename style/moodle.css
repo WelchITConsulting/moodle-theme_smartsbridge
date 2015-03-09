@@ -15412,8 +15412,9 @@ body {
   float: left;
   display: block;
   width: 320px;
-  height: 100px;
-  padding: 15px 0 0 10px;
+  height: 90px;
+  padding: 5px 0 0 10px;
+  margin-bottom: 20px;
   background-color: #b8e0f7;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
