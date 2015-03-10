@@ -70,7 +70,8 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
                 $roles[$groups[0][0]]++;
             }
             if (!empty($roles)) {
-                $content .= html_writer::div($this->show_tag_cloud($roles, $course->id), 'course-roles');
+                $content .= html_writer::tag('h4', get_string('tagcloud', 'theme_smartsbridge'))
+                          . html_writer::div($this->show_tag_cloud($roles, $course->id), 'course-roles');
             }
 
             // Display admin contacts
