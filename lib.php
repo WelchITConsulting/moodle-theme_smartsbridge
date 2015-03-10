@@ -23,8 +23,8 @@
 function smartsbridge_grid($hassidepre, $hassidepost)
 {
     if ($hassidepre && $hassidepost) {
-        $regions = array('content' => 'col-sm-6 col-sm-push-3 col-md-7 col-md-push-3 col-lg-6 col-lg-push-2',
-                         'pre'     => 'col-md-3 col-md-pull-7 col-lg-2 col-lg-pull-6',
+        $regions = array('content' => 'col-sm-6 col-sm-push-3 col-md-7 col-md-push-3 col-lg-8 col-lg-push-2',
+                         'pre'     => 'col-md-3 col-md-pull-7 col-lg-2 col-lg-pull-8',
                          'post'    => 'col-sm-3 col-md-2');
     } else if ($hassidepre && !$hassidepost) {
         $regions = array('content' => 'col-sm-9 col-sm-push-3 col-md-9 col-md-push-3 col-lg-10 col-lg-push-2',
