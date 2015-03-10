@@ -121,7 +121,9 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
             $groupurl = new moodle_url('/user/index.php', array('contextid'   => $ctx->id,
                                                                 'id'          => $courseid,
                                                                 'group'       => $groupid));
+
             $fontsize = str_replace(',', '.', ($smallest + (($count - $mincounts) * $fontstep)));
+
             $a[] = html_writer::tag('a', $group->name, array('href'  => $groupurl,
                                                              'title' => $group->name,
                                                              'class' => 'group-link-' . $group->id,
@@ -130,7 +132,8 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         if (empty($a)) {
             return '';
         }
-        return '<ul class="sb-tag-cloud"><li>'
+        return "\n<!-- maxcounts: {$maxcounts}  mincounts: {$mincounts}  spread: {$spread}  fontspread: {$fontspread}  -->\n"
+             .'<ul class="sb-tag-cloud"><li>'
              . implode('</li><li>', $a)
              . '</li></ul>';
     }
