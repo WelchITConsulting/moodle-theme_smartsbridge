@@ -15477,6 +15477,8 @@ Created  : 09 Mar 2015
 }
 .coursebox .course-roles ul.sb-tag-cloud li {
   float: left;
+  padding: 8px 4px;
+  vertical-align: baseline;
 }
 .coursebox .support-contacts {
   margin-left: -15px;
