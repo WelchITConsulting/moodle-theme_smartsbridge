@@ -15484,8 +15484,8 @@ Created  : 09 Mar 2015
 }
 .coursebox .course-roles ul.sb-tag-cloud li {
   float: left;
-  padding: 8px 4px;
-  vertical-align: baseline;
+  padding: 8px 8px;
+  vertical-align: bottom;
 }
 .coursebox h4 {
   margin-left: 10px;
