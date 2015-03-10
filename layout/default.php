@@ -106,7 +106,6 @@ echo $OUTPUT->doctype(); ?>
                            '<a href="http://welchitconsulting.com/">Welch IT Consulting</a>');
                     ?></div>
                 <div class="col-md-4 site-links">
-                    <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
                 <?php
                     echo $OUTPUT->login_info()
                        . $OUTPUT->standard_footer_html();
