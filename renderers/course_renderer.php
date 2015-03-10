@@ -101,7 +101,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
 
     private function show_tag_cloud($tags, $courseid)
     {
-        $smallest   = 11;
+        $smallest   = 13;
         $largest    = 22;
         $maxcounts  = max($tags);
         $mincounts  = min($tags);
