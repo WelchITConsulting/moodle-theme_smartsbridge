@@ -13059,6 +13059,8 @@ button.close {
 .path-backup .mform .grouped_settings:after,
 .path-backup .mform .grouped_settings .fitem:before,
 .path-backup .mform .grouped_settings .fitem:after,
+.coursebox .course-roles:before,
+.coursebox .course-roles:after,
 .coursebox .support-contacts:before,
 .coursebox .support-contacts:after {
   content: " ";
@@ -13085,6 +13087,7 @@ button.close {
 .form-item:after,
 .path-backup .mform .grouped_settings:after,
 .path-backup .mform .grouped_settings .fitem:after,
+.coursebox .course-roles:after,
 .coursebox .support-contacts:after {
   clear: both;
 }
@@ -15471,6 +15474,10 @@ Created  : 09 Mar 2015
     Author     : John Welch <jwelch@welchitconsulting.co.uk>
                : Copyright (C) 2015 Welch IT Consulting
 */
+.coursebox .course-roles {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 .coursebox .course-roles ul.sb-tag-cloud {
   list-style: none;
   margin: 20px;
@@ -15479,6 +15486,9 @@ Created  : 09 Mar 2015
   float: left;
   padding: 8px 4px;
   vertical-align: baseline;
+}
+.coursebox h4 {
+  margin-left: 10px;
 }
 .coursebox .support-contacts {
   margin-left: -15px;
