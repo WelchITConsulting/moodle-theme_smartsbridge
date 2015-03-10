@@ -15490,6 +15490,7 @@ Created  : 09 Mar 2015
   display: inline-block;
   font-size: 1.2em;
   padding-bottom: 10px;
+  text-align: center;
 }
 @media (min-width: 992px) {
   .coursebox .support-contacts .contact {
