@@ -106,7 +106,7 @@ class theme_smartsbridge_core_course_renderer extends core_course_renderer
         $maxcounts  = max($tags);
         $mincounts  = min($tags);
         $spread     = $maxcounts - $mincounts;
-        if ($spread >= 0) {
+        if ($spread <= 0) {
             $spread = 1;
         }
         $fontspread = $largest - $smallest;
