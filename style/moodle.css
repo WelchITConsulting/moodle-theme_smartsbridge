@@ -15477,6 +15477,7 @@ Created  : 09 Mar 2015
 .coursebox .course-roles {
   margin-left: -15px;
   margin-right: -15px;
+  text-alig: center;
 }
 .coursebox .course-roles ul.sb-tag-cloud {
   list-style: none;
