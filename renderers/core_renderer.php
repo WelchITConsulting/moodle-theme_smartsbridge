@@ -22,50 +22,71 @@
 
 class theme_smartsbridge_core_renderer extends core_renderer
 {
-    /*
+    /**************************************************************************
+     * PUBLIC FUNCTIONS
+     **************************************************************************/
+
+    /**
      * This renders a notification message.
      * Uses bootstrap compatible html.
      */
-    public function notification($message, $classes = 'notifyproblem') {
+    public function notification($message, $classes = 'notifyproblem')
+    {
         $message = clean_text($message);
-        $type = '';
-
-        if ($classes == 'notifyproblem') {
-            $type = 'alert alert-danger';
-        }
-        if ($classes == 'notifysuccess') {
-            $type = 'alert alert-success';
-        }
-        if ($classes == 'notifymessage') {
-            $type = 'alert alert-info';
-        }
-        if ($classes == 'redirectmessage') {
-            $type = 'alert alert-block alert-info';
+        switch($classes) {
+            case 'notifyproblem':
+                $type = 'alert alert-danger';
+                break;
+            case 'notifysuccess':
+                $type = 'alert alert-success';
+                break;
+            case 'notifymessage':
+                $type = 'alert alert-info';
+                break;
+            case 'redirectmessage':
+                $type = 'alert alert-block alert-info';
+                break;
+            default:
+                $type = '';
         }
         return "<div class=\"$type\">$message</div>";
     }
 
-    /*
-     * This renders the navbar.
+    /**
+     * This renders the site subtitle when on  the front page.
      * Uses bootstrap compatible html.
      */
-    public function navbar() {
+    public function page_heading($tag = 'h1')
+    {
+        $heading = parent::page_heading();
+        if ($this->page->pagelayout == 'frontpage') {
+            $heading .= '<h3>' . $this->page->theme->settings->subtitle . '</h3>';
+        }
+        return $heading;
+    }
+
+    /**
+     * This renders the breadcrumbs.
+     * Uses bootstrap compatible html.
+     */
+    public function navbar()
+    {
         $breadcrumbs = '';
         foreach ($this->page->navbar->get_items() as $item) {
             $item->hideicon = true;
-            $breadcrumbs .= '<li>'.$this->render($item).'</li>';
+            $breadcrumbs .= '<li>' . $this->render($item) . '</li>';
         }
-        return "<ol class=breadcrumb>$breadcrumbs</ol>";
+        return '<ol class=breadcrumb>' . $breadcrumbs . '</ol>';
     }
 
-    /*
+    /**
      * Overriding the custom_menu function ensures the custom menu is
      * always shown, even if no menu items are configured in the global
      * theme settings page.
      */
-    public function custom_menu($custommenuitems = '') {
+    public function custom_menu($custommenuitems = '')
+    {
         global $CFG;
-
         if (!empty($CFG->custommenuitems)) {
             $custommenuitems .= $CFG->custommenuitems;
         }
@@ -73,272 +94,110 @@ class theme_smartsbridge_core_renderer extends core_renderer
         return $this->render_custom_menu($custommenu);
     }
 
-    /*
-     * This renders the bootstrap top menu.
-     *
-     * This renderer is needed to enable the Bootstrap style navigation.
-     */
-    protected function render_custom_menu(custom_menu $menu) {
-        global $CFG, $USER;
-
-        // TODO: eliminate this duplicated logic, it belongs in core, not
-        // here. See MDL-39565.
-
-        $content = '<ul class="nav navbar-nav">';
-        foreach ($menu->get_children() as $item) {
-            $content .= $this->render_custom_menu_item($item, 1);
-        }
-
-        return $content.'</ul>';
-    }
-
-    /*
+    /**
      * Overriding the custom_menu function ensures the custom menu is
      * always shown, even if no menu items are configured in the global
      * theme settings page.
      */
-    public function user_menu() {
+    public function user_menu()
+    {
         global $CFG;
         $usermenu = new custom_menu('', current_language());
         return $this->render_user_menu($usermenu);
     }
 
-    /*
+    /**************************************************************************
+     * PROTECTED FUNCTIONS
+     **************************************************************************/
+
+    /**
      * This renders the bootstrap top menu.
-     *
      * This renderer is needed to enable the Bootstrap style navigation.
      */
-    protected function render_user_menu(custom_menu $menu) {
+    protected function render_custom_menu(custom_menu $menu)
+    {
+        global $CFG, $USER;
+        $content = '<ul class="nav navbar-nav">';
+        foreach ($menu->get_children() as $item) {
+            $content .= $this->render_custom_menu_item($item, 1);
+        }
+        return $content.'</ul>';
+    }
+
+    /**
+     * This renders the bootstrap top menu.
+     * This renderer is needed to enable the Bootstrap style navigation.
+     */
+    protected function render_user_menu(custom_menu $menu)
+    {
         global $CFG, $USER, $DB;
 
-        $addusermenu = true;
-        $addlangmenu = true;
-        $addmessagemenu = true;
-
+        // Add the messages menu
         if (!isloggedin() || isguestuser()) {
-            $addmessagemenu = false;
-        }
-
-        /*
-         $messagecount = $DB->count_records('message', array('useridto' => $USER->id));
-         if ($messagecount<1) {
-         $addmessagemenu = false;
-         }
-         */
-
-        if ($addmessagemenu) {
             $messages = $this->get_user_messages();
             $messagecount = count($messages);
-            $messagemenu = $menu->add(
-                $messagecount . ' ' . get_string('messages', 'message'),
-                new moodle_url('#'),
-                get_string('messages', 'message'),
-                9999
-            );
+            $messagemenu = $menu->add($messagecount . ' ' . get_string('messages', 'message'),
+                                      new moodle_url('#'),
+                                      get_string('messages', 'message'),
+                                      9999);
             foreach ($messages as $message) {
-
                 $senderpicture = new user_picture($message->from);
                 $senderpicture->link = false;
-                $senderpicture = $this->render($senderpicture);
-
-                $messagecontent = $senderpicture;
-                $messagecontent .= html_writer::start_tag('span', array('class' => 'msg-body'));
-                $messagecontent .= html_writer::start_tag('span', array('class' => 'msg-title'));
-                $messagecontent .= html_writer::tag('span', $message->from->firstname . ': ', array('class' => 'msg-sender'));
-                $messagecontent .= $message->text;
-                $messagecontent .= html_writer::end_tag('span');
-                $messagecontent .= html_writer::start_tag('span', array('class' => 'msg-time'));
-                $messagecontent .= html_writer::tag('i', '', array('class' => 'icon-time'));
-                $messagecontent .= html_writer::tag('span', $message->date);
-                $messagecontent .= html_writer::end_tag('span');
-
-                $messageurl = new moodle_url('/message/index.php', array('user1' => $USER->id, 'user2' => $message->from->id));
+                $messagecontent = $this->render($senderpicture)
+                                . html_writer::start_span('msg-body')
+                                . html_writer::start_span('msg-title')
+                                . html_writer::span($message->from->firstname . ': ', 'msg-sender')
+                                . $message->text
+                                . html_writer::end_span()   // msg-title
+                                . html_writer::start_span('msg-time')
+                                . html_writer::tag('i', '', array('class' => 'icon-time'))
+                                . html_writer::span($message->date)
+                                . html_writer::end_span();  // msg-body
+                $messageurl = new moodle_url('/message/index.php', array('user1' => $USER->id,
+                                                                         'user2' => $message->from->id));
                 $messagemenu->add($messagecontent, $messageurl, $message->state);
             }
         }
 
+        // Add the language selection menu
         $langs = get_string_manager()->get_list_of_translations();
-        if (count($langs) < 2
-        or empty($CFG->langmenu)
-        or ($this->page->course != SITEID and !empty($this->page->course->lang))) {
+        $addlangmenu = true;
+        if ((count($langs) < 2) || empty($CFG->langmenu) ||
+                (($this->page->course != SITEID) && !empty($this->page->course->lang))) {
             $addlangmenu = false;
         }
-
         if ($addlangmenu) {
             $language = $menu->add(get_string('language'), new moodle_url('#'), get_string('language'), 10000);
             foreach ($langs as $langtype => $langname) {
                 $language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
             }
         }
-
-        if (!$menu->has_children() && $addlangmenu === false) {
+        if (!$menu->has_children() && ($addlangmenu === false)) {
             return '';
         }
 
-        if ($addusermenu) {
-            if (isloggedin()) {
-                $usermenu = $menu->add(fullname($USER), new moodle_url('#'), fullname($USER), 10001);
-                $usermenu->add(
-                    '<i class="icon-lock"></i>' . get_string('logout'),
-                    new moodle_url('/login/logout.php', array('sesskey'=>sesskey(), 'alt'=>'logout')),
-                    get_string('logout')
-                );
-
-                $usermenu->add(
-                    '<i class="icon-user"></i>' . get_string('viewprofile'),
-                    new moodle_url('/user/profile.php', array('id'=>$USER->id)),
-                    get_string('viewprofile')
-                );
-
-                $usermenu->add(
-                    '<i class="icon-cog"></i>' . get_string('editmyprofile'),
-                    new moodle_url('/user/edit.php', array('id'=>$USER->id)),
-                    get_string('editmyprofile')
-                );
-            } else {
-                $usermenu = $menu->add(get_string('login'), new moodle_url('/login/index.php'), get_string('login'), 10001);
-            }
+        // Add the user menu
+        if (isloggedin()) {
+            $usermenu = $menu->add(fullname($USER), new moodle_url('#'), fullname($USER), 10001);
+            $usermenu->add('<i class="glyphicon glypicon-lock"></i>' . get_string('logout'),
+                           new moodle_url('/login/logout.php', array('sesskey'=>sesskey(), 'alt'=>'logout')),
+                           get_string('logout'));
+            $usermenu->add('<i class="glyphicon glypicon-user"></i>' . get_string('viewprofile'),
+                           new moodle_url('/user/profile.php', array('id'=>$USER->id)),
+                           get_string('viewprofile'));
+            $usermenu->add('<i class="glyphicon glypicon-cog"></i>' . get_string('editmyprofile'),
+                           new moodle_url('/user/edit.php', array('id'=>$USER->id)),
+                           get_string('editmyprofile'));
+        } else {
+            $usermenu = $menu->add(get_string('login'), new moodle_url('/login/index.php'), get_string('login'), 10001);
         }
-
         $content = '<ul class="nav navbar-nav navbar-right">';
         foreach ($menu->get_children() as $item) {
             $content .= $this->render_custom_menu_item($item, 1);
         }
 
+        // Return the menu structures
         return $content.'</ul>';
-    }
-
-    protected function process_user_messages() {
-
-        $messagelist = array();
-
-        foreach ($usermessages as $message) {
-            $cleanmsg = new stdClass();
-            $cleanmsg->from = fullname($message);
-            $cleanmsg->msguserid = $message->id;
-
-            $userpicture = new user_picture($message);
-            $userpicture->link = false;
-            $picture = $this->render($userpicture);
-
-            $cleanmsg->text = $picture . ' ' . $cleanmsg->text;
-
-            $messagelist[] = $cleanmsg;
-        }
-
-        return $messagelist;
-    }
-
-    protected function get_user_messages() {
-        global $USER, $DB;
-        $messagelist = array();
-        $maxmessages = 5;
-
-        $readmessagesql = "SELECT id, smallmessage, useridfrom, useridto, timecreated, fullmessageformat, notification
-        				     FROM {message_read}
-        			        WHERE useridto = :userid
-        			     ORDER BY timecreated DESC
-        			        LIMIT $maxmessages";
-        $newmessagesql = "SELECT id, smallmessage, useridfrom, useridto, timecreated, fullmessageformat, notification
-        					FROM {message}
-        			       WHERE useridto = :userid";
-
-        $readmessages = $DB->get_records_sql($readmessagesql, array('userid' => $USER->id));
-
-        $newmessages = $DB->get_records_sql($newmessagesql, array('userid' => $USER->id));
-
-        foreach ($newmessages as $message) {
-            $messagelist[] = $this->bootstrap_process_message($message, 'new');
-        }
-
-        foreach ($readmessages as $message) {
-            $messagelist[] = $this->bootstrap_process_message($message, 'old');
-        }
-        return $messagelist;
-
-    }
-
-    protected function bootstrap_process_message($message, $state) {
-        global $DB;
-        $messagecontent = new stdClass();
-
-        if ($message->notification) {
-            $messagecontent->text = get_string('unreadnewnotification', 'message');
-        } else {
-            if ($message->fullmessageformat == FORMAT_HTML) {
-                $message->smallmessage = html_to_text($message->smallmessage);
-            }
-            if (core_text::strlen($message->smallmessage) > 15) {
-                $messagecontent->text = core_text::substr($message->smallmessage, 0, 15).'...';
-            } else {
-                $messagecontent->text = $message->smallmessage;
-            }
-        }
-
-        if ((time() - $message->timecreated ) <= (3600 * 3)) {
-            $messagecontent->date = format_time(time() - $message->timecreated);
-        } else {
-            $messagecontent->date = userdate($message->timecreated, get_string('strftimetime', 'langconfig'));
-        }
-
-        $messagecontent->from = $DB->get_record('user', array('id' => $message->useridfrom));
-        $messagecontent->state = $state;
-        return $messagecontent;
-    }
-
-
-
-    /*
-     * This code renders the custom menu items for the
-     * bootstrap dropdown menu.
-     */
-    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0 ) {
-        static $submenucount = 0;
-
-        if ($menunode->has_children()) {
-
-            if ($level == 1) {
-                $dropdowntype = 'dropdown';
-            } else {
-                $dropdowntype = 'dropdown-submenu';
-            }
-
-            $content = html_writer::start_tag('li', array('class'=>$dropdowntype));
-            // If the child has menus render it as a sub menu.
-            $submenucount++;
-            if ($menunode->get_url() !== null) {
-                $url = $menunode->get_url();
-            } else {
-                $url = '#cm_submenu_'.$submenucount;
-            }
-            $link_attributes = array(
-                'href'=>$url,
-                'class'=>'dropdown-toggle',
-                'data-toggle'=>'dropdown',
-                'title'=>$menunode->get_title(),
-            );
-            $content .= html_writer::start_tag('a', $link_attributes);
-            $content .= $menunode->get_text();
-            if ($level == 1) {
-                $content .= '<b class="caret"></b>';
-            }
-            $content .= '</a>';
-            $content .= '<ul class="dropdown-menu">';
-            foreach ($menunode->get_children() as $menunode) {
-                $content .= $this->render_custom_menu_item($menunode, 0);
-            }
-            $content .= '</ul>';
-        } else {
-            $content = '<li>';
-            // The node doesn't have children so produce a final menuitem.
-            if ($menunode->get_url() !== null) {
-                $url = $menunode->get_url();
-            } else {
-                $url = '#';
-            }
-            $content .= html_writer::link($url, $menunode->get_text(), array('title'=>$menunode->get_title()));
-        }
-        return $content;
     }
 
     /**
@@ -347,7 +206,8 @@ class theme_smartsbridge_core_renderer extends core_renderer
      * @param tabtree $tabtree
      * @return string
      */
-    protected function render_tabtree(tabtree $tabtree) {
+    protected function render_tabtree(tabtree $tabtree)
+    {
         if (empty($tabtree->subtree)) {
             return '';
         }
@@ -370,7 +230,8 @@ class theme_smartsbridge_core_renderer extends core_renderer
      * @param tabobject $tabobject
      * @return string HTML fragment
      */
-    protected function render_tabobject(tabobject $tab) {
+    protected function render_tabobject(tabobject $tab)
+    {
         if ($tab->selected or $tab->activated) {
             return html_writer::tag('li', html_writer::tag('a', $tab->text), array('class' => 'active'));
         } else if ($tab->inactive) {
@@ -386,15 +247,99 @@ class theme_smartsbridge_core_renderer extends core_renderer
         }
     }
 
-    /*
-     * This renders a notification message.
-     * Uses bootstrap compatible html.
+    /**************************************************************************
+     * PRIVATE FUNCTIONS
+     **************************************************************************/
+
+    /**
+     * Gets an array of unread message objects for the current user
+     *
+     * @global type $USER
+     * @global type $DB
+     * @return array The array of new messages
      */
-    public function page_heading($tag = 'h1') {
-        $heading = parent::page_heading();
-        if ($this->page->pagelayout == 'frontpage') {
-            $heading .= '<h3>' . $this->page->theme->settings->subtitle . '</h3>';
+    private function get_new_user_messages()
+    {
+        global $USER, $DB;
+        $messagelist = array();
+        $messagessql = 'SELECT id, smallmessage, useridfrom, useridto, '
+                     . 'timecreated, fullmessageformat, notification FROM {message} '
+                     . 'WHERE useridto = :userid ORDER BY timecreated DESC LIMIT 5';
+        $messages = $DB->get_records_sql($messagessql, array('userid' => $USER->id));
+        foreach($messages as $message) {
+            $messageContent = new stdClass();
+            if ($message->notification) {
+                $messageContent->text = get_string('unreadnotification', 'message');
+            } else {
+                if ($message->fullmessageformat == FORMAT_HTML) {
+                    $message->smallmessage = html_to_text($message->smallmessage);
+                }
+                if (core_text::strlen($message->smallmessage) > 15) {
+                    $messageContent->text = core_text::substr($message->smallmessage, 0, 15) . '...';
+                } else {
+                    $messageContent->text = $message->smallmessage;
+                }
+            }
+            $elapsedTime = time() - $message->timecreated;
+            if ($elapsedTime < 10800) {
+                $messageContent->date = format_time($elapsedTime);
+            } else {
+                $messageContent->date = userdate($message->timecreated, get_string('strftimetime', 'langconfig'));
+            }
+            $messageContent->from = $DB->get_record('user', array('id' => $message->useridfrom));
+            $messagelist[] = $messageContent;
         }
-        return $heading;
+        return $messagelist;
+    }
+
+    /**
+     * Render the menu items recursively
+     *
+     * @staticvar int $submenucount
+     * @param custom_menu_item $menunode
+     * @param type $level
+     * @return string
+     */
+    private function render_custom_menu_item(custom_menu_item $menunode, $level = 0)
+    {
+        static $submenucount = 0;
+        if ($menunode->has_children()) {
+            if ($level == 1) {
+                $dropdowntype = 'dropdown';
+            } else {
+                $dropdowntype = 'dropdown-submenu';
+            }
+            $content = html_writer::start_tag('li', array('class' => $dropdowntype));
+            $submenucount++;
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#cm_submenu_' . $submenucount;
+            }
+            $linkAttributes = array('href'        => $url,
+                                    'class'       => 'dropdown-toggle',
+                                    'data-toggle' => 'dropdown',
+                                    'title'       => $menunode->get_title());
+            $content .= html_writer::start_tg('a', $linkAttributes)
+                      . $menunode->get_title()
+                      . (($level == 1) ? '<c class="caret"></b>' : '')
+                      . html_writer::end_tag('a')
+                      . html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
+            foreach($menunode->get_children() as $node) {
+                $content .= $this->render_custom_menu_item($node);
+            }
+            $content .= html_writer::end_tag('ul')
+                      . html_writer::end_tag('li');
+        } else {
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#';
+            }
+            $content = html_writer::start_tag('li')
+                     . html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()))
+                     . html_writer::end_tag('li');
+        }
+        return $content;
     }
 }

@@ -61,7 +61,7 @@ module.exports = function(grunt) {
             },
             build: {
                 options: {
-                    compress: true,
+                    compress: false,
                     strictMath: true,
                     sourceMap: false,
                     outputSourceFiles: true
@@ -91,7 +91,6 @@ module.exports = function(grunt) {
                 },
                 src: [
                     'style/moodle.css',
-                    'style/moodle-rtl.css',
                     'style/editor.css'
                 ]
             }
