@@ -67,8 +67,8 @@ module.exports = function(grunt) {
                     outputSourceFiles: true
                 },
                 files: {
-                    "style/moodle.css": "assets/less/moodle.less",
-                    "style/editor.css": "assets/less/editor.less"
+                    "style/moodle.build.css": 'assets/less/moodle.less',
+                    "style/editor.build.css": 'assets/less/editor.less'
                 }
             }
         },
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask("dev", [
         'less:dev',
-//        'autoprefixer',
+        'autoprefixer',
         'copy:dev',
         'concat'
     ]);
