@@ -201,6 +201,57 @@ class theme_smartsbridge_core_renderer extends core_renderer
     }
 
     /**
+     * Render the menu items recursively
+     *
+     * @staticvar int $submenucount
+     * @param custom_menu_item $menunode
+     * @param type $level
+     * @return string
+     */
+    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0)
+    {
+        static $submenucount = 0;
+        if ($menunode->has_children()) {
+            if ($level == 1) {
+                $dropdowntype = 'dropdown';
+            } else {
+                $dropdowntype = 'dropdown-submenu';
+            }
+            $content = html_writer::start_tag('li', array('class' => $dropdowntype));
+            $submenucount++;
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#cm_submenu_' . $submenucount;
+            }
+            $linkAttributes = array('href'        => $url,
+                                    'class'       => 'dropdown-toggle',
+                                    'data-toggle' => 'dropdown',
+                                    'title'       => $menunode->get_title());
+            $content .= html_writer::start_tg('a', $linkAttributes)
+                      . $menunode->get_title()
+                      . (($level == 1) ? '<c class="caret"></b>' : '')
+                      . html_writer::end_tag('a')
+                      . html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
+            foreach($menunode->get_children() as $node) {
+                $content .= $this->render_custom_menu_item($node);
+            }
+            $content .= html_writer::end_tag('ul')
+                      . html_writer::end_tag('li');
+        } else {
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#';
+            }
+            $content = html_writer::start_tag('li')
+                     . html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()))
+                     . html_writer::end_tag('li');
+        }
+        return $content;
+    }
+
+    /**
      * Renders tabtree
      *
      * @param tabtree $tabtree
@@ -290,56 +341,5 @@ class theme_smartsbridge_core_renderer extends core_renderer
             $messagelist[] = $messageContent;
         }
         return $messagelist;
-    }
-
-    /**
-     * Render the menu items recursively
-     *
-     * @staticvar int $submenucount
-     * @param custom_menu_item $menunode
-     * @param type $level
-     * @return string
-     */
-    private function render_custom_menu_item(custom_menu_item $menunode, $level = 0)
-    {
-        static $submenucount = 0;
-        if ($menunode->has_children()) {
-            if ($level == 1) {
-                $dropdowntype = 'dropdown';
-            } else {
-                $dropdowntype = 'dropdown-submenu';
-            }
-            $content = html_writer::start_tag('li', array('class' => $dropdowntype));
-            $submenucount++;
-            if ($menunode->get_url() !== null) {
-                $url = $menunode->get_url();
-            } else {
-                $url = '#cm_submenu_' . $submenucount;
-            }
-            $linkAttributes = array('href'        => $url,
-                                    'class'       => 'dropdown-toggle',
-                                    'data-toggle' => 'dropdown',
-                                    'title'       => $menunode->get_title());
-            $content .= html_writer::start_tg('a', $linkAttributes)
-                      . $menunode->get_title()
-                      . (($level == 1) ? '<c class="caret"></b>' : '')
-                      . html_writer::end_tag('a')
-                      . html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
-            foreach($menunode->get_children() as $node) {
-                $content .= $this->render_custom_menu_item($node);
-            }
-            $content .= html_writer::end_tag('ul')
-                      . html_writer::end_tag('li');
-        } else {
-            if ($menunode->get_url() !== null) {
-                $url = $menunode->get_url();
-            } else {
-                $url = '#';
-            }
-            $content = html_writer::start_tag('li')
-                     . html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()))
-                     . html_writer::end_tag('li');
-        }
-        return $content;
     }
 }
