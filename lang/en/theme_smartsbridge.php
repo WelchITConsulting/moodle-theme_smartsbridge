@@ -49,4 +49,4 @@ $string['region-side-post'] = 'Right';
 $string['region-side-pre']  = 'Left';
 $string['subtitle']         = 'Front page subtitle';
 $string['subtitle_desc']    = 'Optionally select a subtitle for the Moodle homepage';
-$string['tagcloud']         = 'Group Contacts: (click to send access members of the group)';
+$string['tagcloud']         = 'Course Group Contacts: (click on a group to access its members)';
