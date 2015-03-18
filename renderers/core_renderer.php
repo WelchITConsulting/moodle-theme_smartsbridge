@@ -134,7 +134,7 @@ class theme_smartsbridge_core_renderer extends core_renderer
 
         // Add the messages menu
         if (!isloggedin() || isguestuser()) {
-            $messages = $this->get_user_messages();
+            $messages = $this->get_new_user_messages();
             $messagecount = count($messages);
             $messagemenu = $menu->add($messagecount . ' ' . get_string('messages', 'message'),
                                       new moodle_url('#'),
