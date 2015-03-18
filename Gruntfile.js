@@ -46,44 +46,59 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         less: {
-            dev: {
-                // Compile moodle styles.
+            moodledev: {
                 options: {
                     compress: false,
                     strictMath: true,
                     outputSourceFiles: true,
-                    sourceMap: false
+                    sourceMap: true,
+                    sourceMapURL: 'moodle.css.map',
+                    sourceMapFilename: 'style/moodle.css.map'
                 },
-                files: {
-                    'style/moodle.css': 'assets/less/moodle.less',
-                    'style/editor.css': 'assets/less/editor.less'
-                }
+                src: 'assets/less/moodle.less',
+                dest: 'style/moodle.css'
             },
-            build: {
+            editordev: {
                 options: {
                     compress: false,
                     strictMath: true,
-                    sourceMap: false,
-                    outputSourceFiles: true
+                    outputSourceFiles: true,
+                    sourceMap: true,
+                    sourceMapURL: 'editor.css.map',
+                    sourceMapFilename: 'style/editor.css.map'
                 },
-                files: {
-                    "style/moodle.build.css": 'assets/less/moodle.less',
-                    "style/editor.build.css": 'assets/less/editor.less'
-                }
-            }
+                src: 'assets/less/editor.less',
+                dest: 'style/editor.css'
+            },
+            moodlebuild: {
+                options: {
+                    compress: true,
+                    strictMath: true,
+                    outputSourceFiles: true,
+                    sourceMap: true,
+                    sourceMapURL: 'moodle.css.map',
+                    sourceMapFilename: 'style/moodle.css.map'
+                },
+                src: 'assets/less/moodle.less',
+                dest: 'style/moodle.css'
+            },
+            editorbuild: {
+                options: {
+                    compress: true,
+                    strictMath: true,
+                    outputSourceFiles: true,
+                    sourceMap: true,
+                    sourceMapURL: 'editor.css.map',
+                    sourceMapFilename: 'style/editor.css.map'
+                },
+                src: 'assets/less/editor.less',
+                dest: 'style/editor.css'
+            },
         },
+
         autoprefixer: {
             options: {
-                browsers: [
-                    'Android 2.3',
-                    'Android >= 4',
-                    'Chrome >= 20',
-                    'Explorer >= 8',
-                    'Firefox >= 24',
-                    'iOS >= 6',
-                    'Opera >= 12',
-                    'Safari >= 6'
-                ]
+                browsers: [ 'last 2 versions', 'ie 8', 'ie 9' ]
             },
             core: {
                 options: {
@@ -95,6 +110,7 @@ module.exports = function(grunt) {
                 ]
             }
         },
+
         concat: {
             options: {
                 separator: ''
@@ -107,6 +123,7 @@ module.exports = function(grunt) {
                 dest: 'jquery/bootstrap.js'
             }
         },
+
         copy: {
             dev: {
                 nonull: true,
@@ -119,6 +136,7 @@ module.exports = function(grunt) {
                 dest: 'javascript/html5shiv.js'
             }
         },
+
         watch: {
             // Watch for any changes to less files and compile.
             files: ["less/**/*.less"],
@@ -133,14 +151,16 @@ module.exports = function(grunt) {
     grunt.registerTask("default", ["watch"]);
 
     grunt.registerTask("dev", [
-        'less:dev',
+        'less:moodledev',
+        'less:editordev',
         'autoprefixer',
         'copy:dev',
         'concat'
     ]);
 
     grunt.registerTask("build", [
-        'less:build',
+        'less:moodlebuild',
+        'less:editorbuild',
         'autoprefixer',
         'copy:build',
         'concat'
