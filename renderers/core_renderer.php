@@ -133,7 +133,7 @@ class theme_smartsbridge_core_renderer extends core_renderer
         global $CFG, $USER, $DB;
 
         // Add the messages menu
-        if (!isloggedin() || isguestuser()) {
+        if (isloggedin() && !isguestuser()) {
             $messages = $this->get_new_user_messages();
             $messagecount = count($messages);
             $messagemenu = $menu->add($messagecount . ' ' . get_string('messages', 'message'),
@@ -172,20 +172,20 @@ class theme_smartsbridge_core_renderer extends core_renderer
                 $language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
             }
         }
-        if (!$menu->has_children() && ($addlangmenu === false)) {
-            return '';
-        }
+//        if (!$menu->has_children() && ($addlangmenu === false)) {
+//            return '';
+//        }
 
         // Add the user menu
         if (isloggedin()) {
             $usermenu = $menu->add(fullname($USER), new moodle_url('#'), fullname($USER), 10001);
-            $usermenu->add('<i class="glyphicon glypicon-lock"></i>' . get_string('logout'),
+            $usermenu->add('<i class="glyphicon glyphicon-lock"></i> ' . get_string('logout'),
                            new moodle_url('/login/logout.php', array('sesskey'=>sesskey(), 'alt'=>'logout')),
                            get_string('logout'));
-            $usermenu->add('<i class="glyphicon glypicon-user"></i>' . get_string('viewprofile'),
+            $usermenu->add('<i class="glyphicon glyphicon-user"></i> ' . get_string('viewprofile'),
                            new moodle_url('/user/profile.php', array('id'=>$USER->id)),
                            get_string('viewprofile'));
-            $usermenu->add('<i class="glyphicon glypicon-cog"></i>' . get_string('editmyprofile'),
+            $usermenu->add('<i class="glyphicon glyphicon-cog"></i> ' . get_string('editmyprofile'),
                            new moodle_url('/user/edit.php', array('id'=>$USER->id)),
                            get_string('editmyprofile'));
         } else {
@@ -228,9 +228,9 @@ class theme_smartsbridge_core_renderer extends core_renderer
                                     'class'       => 'dropdown-toggle',
                                     'data-toggle' => 'dropdown',
                                     'title'       => $menunode->get_title());
-            $content .= html_writer::start_tg('a', $linkAttributes)
+            $content .= html_writer::start_tag('a', $linkAttributes)
                       . $menunode->get_title()
-                      . (($level == 1) ? '<c class="caret"></b>' : '')
+                      . (($level == 1) ? '<b class="caret"></b>' : '')
                       . html_writer::end_tag('a')
                       . html_writer::start_tag('ul', array('class' => 'dropdown-menu'));
             foreach($menunode->get_children() as $node) {

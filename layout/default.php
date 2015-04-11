@@ -20,11 +20,13 @@
  * Created  : 03 Jan 2015
  */
 
-$hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
-$hassidepost = $PAGE->blocks->region_has_content('side-post', $OUTPUT);
+$isLoggedIn = isloggedin();
 
-$knownregionpre = $PAGE->blocks->is_known_region('side-pre');
-$knownregionpost = $PAGE->blocks->is_known_region('side-post');
+$hassidepre = $isLoggedIn && $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
+$hassidepost = $isLoggedIn && $PAGE->blocks->region_has_content('side-post', $OUTPUT);
+
+$knownregionpre = $isLoggedIn && $PAGE->blocks->is_known_region('side-pre');
+$knownregionpost = $isLoggedIn && $PAGE->blocks->is_known_region('side-post');
 
 $regions = smartsbridge_grid($hassidepre, $hassidepost);
 $PAGE->set_popup_notification_allowed(false);
