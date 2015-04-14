@@ -155,7 +155,7 @@ class theme_smartsbridge_core_renderer extends core_renderer
                                 . html_writer::end_span();  // msg-body
                 $messageurl = new moodle_url('/message/index.php', array('user1' => $USER->id,
                                                                          'user2' => $message->from->id));
-                $messagemenu->add($messagecontent, $messageurl, $message->state);
+                $messagemenu->add($messagecontent, $messageurl, 'new');
             }
         }
 
