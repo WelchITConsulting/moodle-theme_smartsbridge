@@ -20,11 +20,9 @@
  * Created  : 03 Jan 2015
  */
 
-
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2015051800;
-$plugin->requires  = 2013110500;
+$plugin->version   = 2015052000;
+$plugin->requires  = 2015051100;
 $plugin->component = 'theme_smartsbridge';
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = $plugin->version;
